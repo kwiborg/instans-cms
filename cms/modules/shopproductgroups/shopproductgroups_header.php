@@ -1,0 +1,1 @@
+<script src="/cms/scripts/prototype.js" type="text/javascript"></script>

@@ -1,0 +1,66 @@
+	/* BEGIN: STYLES FOR IMAGE GALLERY */
+	#gallery_folderselect{
+		text-align:left;
+		background-color:#ddd;
+		padding:10px;
+		margin-bottom:20px;
+		display:none;
+		font:bold 11px verdana;
+	}
+	#gallery_folderselect select{
+		font:normal 11px verdana;
+	}
+	.gallery_nav{
+		background-color:#ddd;
+		padding:10px;		
+	}
+	.gallery_nav_divider{
+		margin:0 10px 0 10px;
+	}
+	#gallery_image{
+	}
+	.imagefolder{
+		padding:10px;
+		background-color:#fff;
+		margin:0 0 20px 0;
+	}
+	.imagefolder img{
+		border:1px solid #000;
+	}
+	.level_0 a{
+		font:bold 14px arial;
+	}
+	.level_0{
+		border-top:5px solid #aaa
+	}
+	.level_1, .level_2{
+		background-color:#ddd;
+		padding:10px;
+		margin-top:-20px;
+		border-top:1px solid #aaa
+	}
+	.level_1{
+		padding-left:20px;
+	}
+	.level_2{
+		padding-left:40px;
+	}	
+	.thumbnail_index_item{
+		float:left;
+		width:70px;
+		height:100px;
+		text-align:center;
+		background-color:#ddd;
+		border:1px solid #aaa;
+		margin:0 3px 3px 0;
+		padding:5px;
+		font:normal 9px arial;
+	}
+	.thumbnail_index_item img{
+		border:1px solid #aaa;
+	}
+	.before_subfolders{
+		clear:both;
+		margin-bottom:20px;
+	}
+	/* END: STYLES FOR IMAGE GALLERY */

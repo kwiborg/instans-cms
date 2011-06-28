@@ -1,0 +1,1865 @@
+// INSTANS CMS - CHANGELOG
+
+			*   Markerer database ændring
+			+	Markerer ændring i config fil eller andre filer udenfor cms mappen
+			A	Markerer database-ændringer som udføres automatisk af auto_upgrade.php
+
+2006-03-06  -	RELEASE: VERSION 2.5
+2006-03-07  - 	Login: Nu kan man logge ind med tryk på "enter". (MAP)
+2006-03-08  * 	Pages: Tilføjes feltet "PHP_HEADERINCLUDE_PATH" på pages tabellen. Bruges til udvidet plug-in funktionalitet. (MAP)
+2006-03-09  - 	Picturearchive: Omlagt til at understøtte dynamisk load af folderdata + import fra ftp dropbox. (MAP)
+2006-03-09  -   Picturearchive funktioner fra common.inc.php er flyttet til egen picturearchive.common.inc (MAP)
+2006-03-09  -	common.ajaxresponders.inc.php er opdelt og flyttet ind under hhv modules/picturearchive og fckeditor_plugins/customImage (MAP)
+2006-03-09  -   Bookmaker: Rettet fejl, så man kan oprette første bog. (MAP)
+2006-03-09  -   Bookmaker: Funktioner i plugins/bookmaker/bookmaker_functions.inc.php flyttet til modules/bookmaker/bookmaker.common.inc.php (MAP)
+2006-03-09  -   Funktionalitet i db.php flyttet til common.inc.php (MAP)
+2006-03-09  -   images/logo.gif flyttet udenfor cms mappen til cms_configimages/logo.gif (MAP)
+2006-03-09  -   cms_config.inc.php flyttet udenfor cms mappen (MAP)
+2006-03-09  -   cms_fckconfig.js flyttet udenfor cms mappen (MAP)
+2006-03-09  -   cms_history.txt flyttet udenfor cms mappen (MAP)
+2006-03-09  -	RELEASE: VERSION 2.5.1
+
+2006-03-10  -	Logoff funktionalitet lagt ind under login.php. Logoff.php slettet (MAP)
+2006-03-10  -	moremanagement.css omdøbt til cms.css (MAP)
+2006-03-10  -	Rettet fejl, så billedgalleri virker igen (MAP)
+2006-03-10  -	RELEASE: VERSION 2.5.2
+
+2006-03-10  -	Rettet fejl, så css bliver loaded korrekt på login side (MAP)
+2006-03-10  -	Pages: Eksisterende funktioner omlagt til "tabs" (MAP)
+2006-03-13  -	Pages: Funktionen nysideoversigt() flyttet til pages.common.inc.php (MAP)
+2006-03-13  -	Pages: Man kan nu vælge én forside på hvert sprog under fanebladet "Menu" (MAP)
+2006-03-13  -	Pages: Nu defaultværdier for published, beskyttet og rettigheder (MAP)
+2006-03-13  *	Pages-tabellen: Feltet EXTERNAL_URL omdøbt til POINTTOPAGE_URL (MAP)
+				ALTER TABLE  `PAGES` CHANGE  `EXTERNAL_URL`  `POINTTOPAGE_URL` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+2006-03-13	-	Events: Radiobutton for valgt kalender er automatisk valgt + defaults bliver sat ved ny event. (MAP)
+2006-03-13  -	RELEASE: VERSION 2.5.3
+
+2006-03-13	-	Events: Rettet javascript fejl på rediger event side. (MAP)
+2006-03-14	-	News: Eksisterende funktioner omlagt til "tabs" (MAP)
+2006-03-14	-	Events: Eksisterende funktioner omlagt til "tabs" (MAP)
+2006-03-14	-	Newsletters: Titel + modtagerinfo or nyhedsbreve flyttet til config.inc.php (MAP)
+2006-03-14	-	Newsletters: Fejl rettet: Ikke længere muligt at udsende nyheder, som ikke er publicerede (MAP)
+2006-03-14	-	Picturearchive: Dropbox-upload virker nu også hvis der ikke er indtastet en maxsize (MAP)
+2006-03-14	-	Menu: "Vedhæftede filer"-modulet er fjernet fra menuen (MAP)
+2006-03-14	-	Rettet fejl i filupload - returnFolderName er flyttet tilbage til common.inc.php (MAP)
+2006-03-14	-	Rettet fejl i filupload - Filens titel vises nu i oversigt (MAP)
+2006-03-14  -	Formular editor - rettet så "Linktekst til direkte link til formularen" hentes fra SITES tabellen (MAP)
+2006-03-14  -	RELEASE: VERSION 2.5.4
+
+2006-03-14	-	Mappen "/php-includes" flyttet og omdøbt til "/cms/frontend". Indeholder filerne frontend_common.inc.php 
+				(gængse frontend-funktioner), frontend_pagetop.inc.php (inkluderes i toppen af hvert sites index.php) og 
+				frontend_oldplugins.inc.php (indeholder funktioner til plugins fra det oprindelige CMS v1.0, som på sigt 
+				skal flyttes - der er bare ikke pt. noget sted at placere dem) (CJS)
+2006-03-14	-	Filen "cms_language.inc.php" placeret i cms-mappen som /cms/cms_language.inc.php (CJS)
+2006-03-15	*	Menus-tabellen: MAX_LEVELS omdøbt til DEFAULT_LANGUAGE (MAP)
+				ALTER TABLE  `MENUS` CHANGE  `MAX_LEVELS`  `DEFAULT_LANGUAGE` INT NOT NULL
+2006-03-15	-	Mapperne: css, images, javascript, plugins, uploaded_files og uploaded_pictures er flyttet til ny mappe 
+				includes. Relevante stier er tilrettet/flyttet til config.inc.php (MAP)
+2006-03-15	-	Rettet kosmetisk fejl ved ingen mapper i billedarkiv (MAP)
+2006-03-15	*	News-tabellen: GLOBAL_ID omdøbt til NEWSFEED_ID (MAP)
+				ALTER TABLE  `NEWS` CHANGE  `GLOBAL_ID`  `NEWSFEED_ID` INT( 11 ) NOT NULL
+2006-03-15	*	Newsfeeds-tabellen: Tilføjet DEFAULT_LANGUAGE (MAP)
+				ALTER TABLE  `NEWSFEEDS` ADD  `DEFAULT_LANGUAGE` INT NOT NULL AFTER  `NAME` ;				
+2006-03-15	*	Newsfeeds-tabellen: Tilføjet SITE_ID (MAP)
+				ALTER TABLE  `NEWSFEEDS` ADD  `SITE_ID` INT NOT NULL AFTER  `NAME` ;
+2006-03-15	-	Nu kan man vælge mellem nyhedsarkiver i nyhedsoversigten (MAP)
+2006-03-15	*	Pages-tabellen: Tilføjet IS_MENUPLACEHOLDER som er 1 hvis der ikke er indhold på siden, men kun underpunkter (MAP)
+				ALTER TABLE  `PAGES` ADD  `IS_MENUPLACEHOLDER` TINYINT( 11 ) DEFAULT  '0' NOT NULL AFTER  `IS_FRONTPAGE` ;
+2006-03-15	-	Pages: Man kan sætte en side til "tom" jf. IS_MENUPLACEHOLDER herover (MAP)
+2006-03-15	*	Calendars-tabellen: Tilføjet feltet DEFAULT_LANGUAGE (MAP)
+				ALTER TABLE  `CALENDARS` ADD  `DEFAULT_LANGUAGE` INT NOT NULL AFTER  `NAME` ;
+2006-03-15	*	Calendars-tabellen: Tilføjet feltet SITE-ID (MAP)
+				ALTER TABLE  `CALENDARS` ADD  `SITE_ID` INT NOT NULL AFTER  `NAME` ;
+2006-03-15	*	Calendars-tabellen: Droppet feltet GLOBAL_ID (MAP)
+				ALTER TABLE  `EVENTS` DROP  `GLOBAL_ID`
+2006-03-16	-	Nu kan man vælge mellem kalendere i nyhedsoversigten (MAP)
+2006-03-16  -	RELEASE: VERSION 2.5.5
+
+2006-03-17	-	Frontend_common.inc.php: Menugenerering understøtter nu IS_MENUPLACEHOLDER og POINTTOPAGE_URL (CJS)
+2006-03-17	-	Nyhedsboks og nyhedsarkiv understøtter nu flere feeds. Samme gælder for kalender (CJS)
+2006-03-17	-	Pages: Nu bliver der automatisk valgt en menu i sideredigering, så man ikke kan komome til at oprette sider uden menu (MAP)
+2006-03-17	-	Pages: Rettet fejl så korrekt default-sprog bliver valgt (MAP)
+2006-03-17	-	commom.inc.php: buildLanguageDropdown() tilføjet ekstra argument, så det er muligt at sætte id for selectoren (MAP)
+2006-03-17	-	Pages: Rettet fejl så man kan vælge ny forside (MAP)
+2006-03-17	-	customLink fck plugin: Fejl rettet så site-sti kommer med i links (MAP)
+2006-03-17	-	datadumper.php: Omlagt fra mysql_db_query til mysql_query (MAP)
+2006-03-17	-	Picturearchive: Fjernet lorem ipsum tekst i billedredigering (MAP)
+2006-03-17	-	customImage fck plugin: Fejl rettet så sti til uploaded_pictures mappen er korrekt (MAP)
+2006-03-17	-	RELEASE: VERSION 2.5.6
+
+2006-03-20	-	frontend_common: Fjernet kalendertitel i paranteser i funktionen calendar() (CJS)
+2006-03-20	-	frontend_common: Rettet frontEndMenuPath til at vise arkivtitel i breadcrumb-sti + funktioner anvender nu $_GET 
+				variabler i stedet for globale variabler (CJS)
+2006-03-20	-	Tilføjet "Tilbage til " ord i cms_language filen (CJS)
+2006-03-20	-	frontend_common: Rettet kalender-fejl mht. manglende kalendertitel (manglede et calendarid i calendarBox()) (CJS)
+2006-03-20	- 	frontend_common: Rettet søgemaskine: Man kunne søge i PAGES/NEWS/EVENTS med PUBLISHED='0'. (CJS)
+2006-03-21	+	modules.config fil er lagt ind under cms_config.inc.php (MAP)
+2006-03-21	-	common.inc.php: Funktionen BuildCMSMenu ændret til ny modul config (MAP)
+2006-03-21	+	common.inc.php: Tilføjet funktionen "moduleInstalled", der checker om et modul er installeret. Variablen $bookmakerOn fjernet fra config. (MAP)
+2006-03-21	-	Rettet fejl i billedarkivet ved gdlib version < 2.0.28 (uden gif support) (MAP)
+2006-03-21	-	frontend_common: formGenerator tilpasset med classes til CSS (CJS)
+2006-03-21	-	RELEASE: VERSION 2.5.7
+
+2006-03-21	-	Events: Til-dato automatisk disabled ved ny event (MAP)
+2006-03-21	+	Tilføjet FRONTENDIMAGEPATH til config.inc (CJS)
+2006-03-21	-	Rettet i gemRow (events/news mfl.) rettet fejl så dato ikke bliver vendt om ved en fejl. (MAP)
+2006-03-21	-	Events: "Publiceret"-status vises i oversigt + display fejl på vis/skjul filter rettet + sorteringsfejl v/klik på kolonner rettet. (MAP)
+2006-03-21	-	News: ID-kolonne fjernet fra oversigt + display fejl på vis/skjul filter rettet + sorteringsfejl v/klik på kolonner rettet. (MAP)
+2006-03-21	-	Formeditor: ID/POS fjernes på felt-oversigt + "skal udfyldes"-kolonne tilføjet på oversigt. (MAP)
+2006-03-21	-	Formeditor: Afsender på mail = "SITENAME <no-reply@no-reply.no>" (MAP) 
+2006-03-21	-	Picturearchive: Alt-tekst omdøbt til "Billedtitel" og tilføjet oversigt (MAP)
+2006-03-21	-	Picturearchive: Smårettelser i ajaxresponders (MAP)
+2006-03-21	+	Omlægning af modules + tilhørende config til at håndtere automatisk include + stier udenfor cms mappen (CJS)
+2006-03-21	-	RELEASE: VERSION 2.5.8
+
+2006-03-22	-	config+langugage filer nu opdelt i et "base"-komponent og et site-specifikt komponent, der kan "override" base-indstillinger. (MAP)
+2006-03-22	-	Frontend: Fejl rettet i breadcrumb sti (CJS)
+2006-03-22	+	Tilføjet $defaultLanguage og $defaultSite i cms_baseconfig fil + tilrettet i index.php + frontend common (MAP)
+2006-03-22	+	I cms_config.inc.php redeklareres nu variabler der afhænger af $cmsDomain (MAP)
+2006-03-22	-	RELEASE: VERSION 2.5.9
+
+2006-03-23	-	Frontend:Newsbox - rettet funktion så den ikke viser noget ved 0 resultater + mulighed for at slå dato til/fra
+				+ placere dato over/under nyhed + tilføje class attribut til dato & arkiv-link + "indtast søgeord" tekst i input 
+				feltet ("enterSearchterm" tilføjet baselanguage). (MAP)
+2006-03-23	-	Frontend:Searchbox - Fjernet style attribut på search-knap, tilføjet id på diverse elementer. (MAP)
+2006-03-23	-	Rettet frontend_menupath så den ikke fejler ved ikke-eksisterende pageid (CJS)
+2006-03-23	-	Fjernet ref. til $mainmenuoff i billedarkiv (CJS)
+2006-03-24	*	Tilføjet tabel TEMPLATES (MAP)
+				CREATE TABLE  `TEMPLATES` (
+				 `ID` INT NOT NULL AUTO_INCREMENT ,
+				 `NAME` TEXT NOT NULL ,
+				 `DESCRIPTION` TEXT NOT NULL ,
+					 `PATH` TEXT NOT NULL ,
+				PRIMARY KEY (  `ID` )
+				) TYPE = MYISAM CHARACTER SET latin1 COLLATE latin1_danish_ci COMMENT =  'Holds templates for use in CMS';
+2006-03-24  *	Tilføjet kolonnen DEFAULT_TEMPLATE til SITES tabellen: (MAP)
+				ALTER TABLE  `SITES` ADD  `DEFAULT_TEMPLATE` INT NOT NULL AFTER  `SITE_PATH` ;
+2006-03-24	*	Tilføjet kolonnen TEMPLATE til PAGES tabellen (sættes kun hvis der skal bruges en anden template end default site-template): (MAP)
+				ALTER TABLE  `PAGES` ADD  `TEMPLATE` INT NOT NULL ;
+2006-03-24	*	Tilføjet kolonnen PHP_INCLUDEAFTER_PATH til PAGES tabellen (inkluder efter sidens indhold): (MAP)
+				ALTER TABLE  `PAGES` ADD  `PHP_INCLUDEAFTER_PATH` TEXT NOT NULL AFTER  `PHP_INCLUDE_PATH` ;
+2006-03-24	-	Tilføjet til common.inc.php: function returnDefaultTemplateId($id) - opslag i SITES tabellen (MAP)
+2006-03-24	-	Tilføjet til frontend.common.inc.php: function returnTemplatePath() (MAP)
+2006-03-24	-	Opdateret sideredigering (avanceret tab) til at håndtere ovennævnte tabeltilføjelser. (MAP)
+2006-03-24	*	Tilføjet kolonnen PRINTTEMPLATE_PATH til TEMPLATES tabellen (MAP)
+				ALTER TABLE  `TEMPLATES` ADD  `PRINTTEMPLATE_PATH` TEXT NOT NULL AFTER  `PATH` ;
+2006-03-24	*	Dropped kolonner CMS_USER & BANNED fra USERS tabellen: (MAP)
+				ALTER TABLE  `USERS` DROP  `CMS_ACCESS` ,
+				DROP  `BANNED` ;
+2006-03-24	+	Rettet index.php så den automatisk loader template afh. af indstillinger i database (MAP)
+2006-03-24	-	Opdateret frontend.common.inc.php: Funktionen buildPageMainContent håndterer nu bund+top include + fejlhåndterer header-include (MAP)
+2006-03-24	-	RELEASE: VERSION 2.5.10
+
+2006-03-24	*	Tabel RIGHTS omdøbt til PERMISSIONS: (MAP)
+				ALTER TABLE  `RIGHTS` RENAME  `PERMISSIONS` ;
+2006-03-24	*	Tilføjet tabel PERMISSIONGROUPS: (MAP)
+				CREATE TABLE  `PERMISSIONGROUPS` (
+				 `ID` BIGINT NOT NULL AUTO_INCREMENT ,
+				 `TITLE` TEXT NOT NULL ,
+				PRIMARY KEY (  `ID` )
+				) TYPE = MYISAM COMMENT =  'Holds permission groups for use in CMS';				
+2006-03-24	*	Tilføjet tabel GROUPS_PERMISSIONS: (MAP)
+				CREATE TABLE  `GROUPS_PERMISSIONS` (
+				 `ID` INT NOT NULL AUTO_INCREMENT ,
+				 `GROUPS_ID` INT NOT NULL ,
+				 `PERMISSIONS_ID` INT NOT NULL ,
+				PRIMARY KEY (  `ID` )
+				) TYPE = MYISAM COMMENT =  'Holds relation between usergroups and permissions in CMS';
+2006-03-24	*	Kolonne RIGHTGROUP omdøbt til PERMISSIONGROUPS_ID på tabel PERMISSIONS (MAP)
+				ALTER TABLE  `PERMISSIONS` CHANGE  `RIGHTGROUP`  `PERMISSIONGROUPS_ID` INT NOT NULL				
+2006-03-24	-	common.inc.php: Tilføjet funktionen function listGroupRights($group_id) (MAP)
+2006-03-24	-	common.inc.php: Tilføjet function returnDistinctUserPermissions($userid) (CJS)
+2006-03-24	-	common.inc.php: Rettet function gemBruger($POSTVARS) så den ikke længere opdaterer rettigheder (MAP)
+2006-03-24	-	Users: Rettighedsfunktionalitet fjernet + submithandler tilpasset (MAP)
+2006-03-24	-	common.inc.php: Tilføjet funktionen sendNewUserMail (MAP)
+2006-03-24	-	Groups: Nu kan man tilknytte/fjerne rettigheder til en gruppe. (MAP)
+2006-03-24	-	common.inc.php: Tilføjet funktionen checkPermission($permission_str) (MAP)
+2006-03-24	-	Login: Lagt om til at trække på ny rettighedsstyring + populere SESSION varaiabel med rettigheder (CJS)
+2006-03-27	+	cms_baseconfig opdateret med menurettigheder (MAP)
+2006-03-27	-	common.inc.php: cms menu funktion opdateret så kun menupunkter man har rettighed til vises (MAP)
+2006-03-27	-	Kald til checkpermissions tilføjet i toppen af alle modulers submithandler (MAP)
+2006-03-27	-	frontend.common.inc.php: Rettet sti-fejl i funtionen galleryBuilder($pageid) (MAP)
+2006-03-27	-	frontend.common.inc.php: Rettet fejl i template selector (virkede ikke for sider uden pageid) (MAP)
+2006-03-29	-	customImage.ajaxresponders.php: Rettet fejl i include sti (MAP)
+2006-04-04	+	Tilføjet $fckEditorCustomConfigPath til cms_baseconfig.inc.php (og evt. cms_config.inc.php) (CJS)
+2006-04-04	-	RELEASE: VERSION 2.5.11
+
+2006-04-06	-	Formeditor: Rettet fejl så arkiveringsmetode er checket af ved redigering (MAP)
+2006-04-06	-	Formeditor: Rettet fejl så fra-til datoer kan slettes og vises korrekt (MAP)
+2006-04-06	*	Tilføjed DELETED kolonne på DEFINED_FORMS tabellen (MAP)
+				ALTER TABLE  `DEFINED_FORMS` ADD  `DELETED` TINYINT( 1 ) DEFAULT  '0' NOT NULL ;
+2006-04-06	-	Formeditor: Nu kan man slette formularer (DELETED = 1) Evt. datatabeller bliver ikke slettet (MAP)
+2006-04-06	-	Menu-infoboks: Man kan kun skifte site hvis der er mere end ét site i databasen (MAP)
+2006-04-06	-	Menu-infoboks: Tilføjet "Åbn website"-link (MAP)
+2006-04-06	-	Sideoversigt: Kladde-markering af sider som ikke er publiceret (MAP)
+2006-04-06	+	SendTilEnVen funktionen er oversat til engelsk (MAP)
+2006-04-11	-	Pages: Vedhæft fil funktionalitet lagt ind under ny "Relateret indhold"-tab i sideredigering (MAP)
+2006-04-11	*	Droppet obsolete tabel GALLERY_IMAGES: (MAP)
+				DROP TABLE  `GALLERY_IMAGES`
+2006-04-11	*	Droppet obsolete tabel GALLERY_FOLDERS: (MAP)
+				DROP TABLE  `GALLERY_FOLDERS`
+2006-04-11	-	Pages: Vedhæft gallery funktionalitet lagt ind under "Relateret indhold"-tab i sideredigering (MAP)
+2006-04-11	-	CSV export funktionalitet tilføjet formular editor (CJS)
+2006-04-11	-	Udkommenteret formularfunktioner i common.inc.php (CJS)
+2006-04-11	-	Pages: Vedhæft formular funktionalitet lagt ind under "Relateret indhold"-tab i sideredigering (MAP)
+2006-04-11	-	Ryddet op i tab-funktioner under pages/news/events. Fælles funktioner flyttet til commonscripts.js 
+				og der er tilføjet et IE scecifikt hack for at få highlight til at virke i IE. (MAP)
+2006-04-12	-	Fjernet "send e-mail kvittering" felt under formeditor-modul, da funk. ikke er implem. (CJS)
+2006-04-12	-	Nyt skin (SILVER) på FCK-editor (CJS)
+2006-04-12	-	Rettet preview-funk., som var i stykker. Knappen hedder nu "Gem og preview" (CJS)
+2006-04-12	-	Formeditor: CSV-knap ghostes, hvis der ikke er nogle rows at udtrække (CJS)
+2006-04-12	-	Generel reworking af CMS'ets CSS (CJS/MAP)
+2006-04-12	-	Rettet customBox, så den indeholder korrekt URL, hvis siden der linkes til er en extern URL (CJS)
+2006-04-12	-	Implementeret sendToFriend-funktionen på da/en (CJS), incl. rettelser i language-filerne (CJS)
+2006-04-12	-	Tilføjet en frontend_headerJS.php i cms/frontend, som indeholder variabler, der sendes med ind i JS-funktionerne (i common.js) (CJS)
+2006-04-12	-	Rettet fejl i "Flyt siden i hierarkiet" funktion under sideoversigt, så det nu ser korrekt ud i FF (CJS)
+2006-04-12	-	Rettet fejl i nyhedsbrev-admin, der gjorde, at man ikke kunne sortere modtagerliste efter e-mail (CJS)
+2006-04-18	*	Ændret kolonnenavn i BOX_SETTINGS tabellen (MAP):
+				ALTER TABLE  `BOX_SETTINGS` CHANGE  `LAST_EDITED`  `LASTEDITED` TINYINT( 4 ) NOT NULL DEFAULT  '0'
+2006-04-18	-	Funktion til custom boxes ændret i frontend-common. (CJS)			
+2006-04-19	-	Sideredigering: Alle funktioner til relateret indhold i sideoversigt drop-down er flyttet til "Relateret indhold"-tab. (MAP)
+2006-04-19	-	Sideredigering: "Flyt"-funktionen flyttet fra drop-down til selvstændig knap + funktion/css finpudset (MAP)
+2006-04-19	*	Droppet obsolete tabeller i databasen (MAP)
+				DROP TABLE  `FRONTPAGES` , `GROUPS_RIGHTS` ;
+2006-04-19	-	RELEASE: VERSION 2.5.12
+
+2006-04-20	-	Rettet frontend_common.inc.php: Fjernet "in while" echo + nu kommer der kun en <h1> ud, hvis der er indtastet en overskrift (CJS)
+2006-04-20	-	Login på FE: Fjernet BANNED check (CJS)
+2006-04-20	-	Valgfrit tegn udfor menupunkter med underpunkter (CJS)
+2006-04-20	-	Fjernet <br /> i søgeboks.
+2006-04-20	+	Tilføjet mulighed for grafiske overskrifter. Sæt $useGrahicalHeadings = true; i config fil for at slå funktionen til. 
+				Nye filer er: includes/images/test.png, includes/images/gfxheadings_cache/ (folder), includes/gfxheadings.php, 
+				includes/fonts/headingfont.ttf, includes/javascript/gfxheadings.js, includes/css/replacement-print.css, 
+				includes/css/replacement-screen.css. Default font er 24px Helvetica Neue Condensed Bold. Image cache er slået fra. (MAP)
+2006-04-21	-	Nu muligt at sætte fast linie/grafik-højde i grafiske overskrifter. (MAP)
+2006-04-21	-	Picturearchive: Fixed bugs så gifs og animerede gifs nu gemmes med størrelsesoplysninger i databasen. Desuden tilføjet 
+				resize muligheder for png filer. Også tilføjet ekstra "Tilføj billede"-knap i bunden af billedliste (MAP)
+2006-04-21	-	Pages: Rettet fejl i Relataret indhold-tab så nyheder og events folder korrekt ind. (MAP)
+2006-04-21	-	Picturearchive: Tilrettet alt-tekst funktioner i Fck editors customImage funktion og lagt funktionerne ind i picturearchive_common.inc.php (MAP)
+2006-04-21	-	Rettet: Alt tekst er beskrivelse - ikke titel (skal være titel) (MAP)
+2006-04-21	-	Boxes, rettet: Safari fejler ved slet boks + ved opret boks + Når der ikke er bokse oprettet er tabellen ikke helt pæn. (MAP)
+2006-04-21	- 	Rettet fejl i bookmaker vedr. absolutte stier (CJS)
+2006-04-21	+	Tilføjet "pluginsPath" til config-filerne (CJS)
+2006-04-21	-	Rettet menufunktion, så den sætter bookid på URL, hvis siden har en bog på sig (CJS)
+2006-04-21	-	Fjernet bookmaker-hack i common.inc (gemRow) (CJS)
+2006-04-21	-	Rettet buildPageMainContent, så bookmaker-plugin i stedet inkluderes i udtrækket, hvis der er et book_id på siden (jf. ovenstående) (CJS)
+2006-04-21	-	FE: Rettet galleryBuilder, så JS'et ikke knækker, hvis der er linebreaks i billedtitler (CJS)
+2006-04-21	*	Tilføjet 2 felter til PAGES tabellen: (MAP)
+				ALTER TABLE  `PAGES` ADD  `META_DESCRIPTION` TEXT NOT NULL , ADD  `META_KEYWORDS` TEXT NOT NULL ;
+2006-04-21	+	searchOptimizerOn sat til true i baseconfig (MAP)
+2006-04-21	-	Common.inc.php: Tilføjet funktionen: returnGeneralSetting($settingname, $siteid="") (MAP)
+2006-04-21	-	Frontend.common.inc: Funktionen metaTagGenerator() skrevet om til at håndtere flere sprog og side-specifikke meta tags (MAP)
+2006-04-21	*	Tilføjet 1 felt til PAGES tabellen: (MAP)
+				ALTER TABLE  `PAGES` ADD  `META_SEOTITLE` TEXT NOT NULL ;
+2006-04-21	*	Tilføjet 1 felt til GENERAL_SETTINGS tabellen - "META_TITLE_USEPAGESCOLUMN" indeholder navnet på den række i pages tabellen, 
+				som er default i title tags: (MAP)
+				ALTER TABLE  `GENERAL_SETTINGS` ADD  `META_TITLE_USEPAGESCOLUMN` TEXT NOT NULL AFTER  `META_KEYWORDS` ;
+2006-04-21	-	Sideredigering: Tilføjet titel valg + side-specifikke meta-tags på ny søgeoptimering-tab (MAP)
+2006-04-21	-	Kalender: FE funktion til flere kalendre implementeret (CJS)
+2006-04-24	-	FE.common: galleryBuilder funktion og includes/javascript/common.js rettet så den ikke fejler på resize ved load. (MAP)
+2006-04-24	-	Hvis ingen print-template skjules automatisk "printervenlig"-knap (CJS)
+2006-04-24	-	Søgning: Rettet fejl så bog-sider vises korrekt når de fundes i søgning. (CJS)
+2006-04-24	-	Bogværktøj - bogen fåe altid rigtig bredde uanset template (100%) (CJS)
+2006-04-24	-	SharedFunction: Ny funktion returnBreadcrumb() (CJS)
+2006-04-24	-	RELEASE: VERSION 2.5.13
+
+2006-04-25	-	Oprettet mappen /cms/documentation/ der indeholder basis-udgaver af nødvendige config filer (MAP)
+2006-04-25	-	nyinstans.txt opdateret med vejledning til installation af ny udgave af cms. Filen flyttet til /cms/documentation/ (MAP)
+2006-05-04	-	Rettet fejl i bookmaker, hvor der stod "bookmaker.common" i stedet for "bookmaker_common..." (CJS)
+2006-05-04	-	Bookmaker: Lavet en HOVER class (cms.css) til indholdsoversigtens DIV'er + en funk. i commonscripts.js (bookmakerIEColor...) (CJS)
+2006-05-04	-	Bookmaker: <font size='1'> føjes automatisk til foran matrix-tables + </font> til sidst (CJS)
+2006-05-08	*	Startet på CART: Oprettet tabel CART_CONTENTS (CJS)
+				CREATE TABLE `CART_CONTENTS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `CART_ID` text collate latin1_danish_ci NOT NULL,
+				  `PRODUCT_ID` int(11) NOT NULL default '0',
+				  `PRODUCT_TABLENAME` text collate latin1_danish_ci NOT NULL,
+				  `AMOUNT` int(11) NOT NULL default '0',
+				  `FRAGT` float NOT NULL default '0',
+				  `DELIVERY_DAYS` int(11) NOT NULL default '0',
+				  `CUSTOM_PRICE` float NOT NULL default '0',
+				  `CUSTOM_DESCRIPTION` text collate latin1_danish_ci NOT NULL,
+				  `TIME_ADDED` int(11) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci ;
+2006-05-08	-	Cart: Oprettet funktioner i frontend_common (CJS)
+2006-05-08	+	Cart: Oprettet $productTables i CMS-config, som holder styr på felt-navnene på de produkttabeller, der bruges i cart (CJS)
+2006-05-08	-	Mode-plugin: Lavet mode-plugin-funktionalitet i frontend_pagetop og frontend_common (buildPageMain...) (CJS)
+2006-05-08	-	Cart: Mode-plugin ligger i /cms/modules/cart/frontend (CJS)
+2006-05-08	*	Tabellen "ddv_varer" er midlertidigt oprettet på DEV for at teste kurven. Burde være en "generisk" produkttabel (CJS)
+2006-05-16	*	Oprettet tabel CART_ORDERS til at indeholde ordrer fra kurven (CJS)
+					CREATE TABLE `CART_ORDERS` (
+									  `ID` int(11) NOT NULL auto_increment,
+					  `UNIQUE_ORDERID` text NOT NULL,
+					  `CART_ID` text NOT NULL,
+					  `USER_ID` int(11) NOT NULL default '0',
+					  `NAME` text NOT NULL,
+					  `ADDRESS` text NOT NULL,
+					  `CITY` text NOT NULL,
+					  `ZIPCODE` int(11) NOT NULL default '0',
+					  `PHONE` text NOT NULL,
+					  `CELLPHONE` text NOT NULL,
+					  `FAX` text NOT NULL,
+					  `EMAIL` text NOT NULL,
+					  `NOTES` text NOT NULL,
+					  `COMPANY` text NOT NULL,
+					  `CVR` int(11) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) TYPE=MyISAM;
+2006-05-15	*	Tilføjet 2 felter til TEMPLATES tabellen: CARTTEMPLATE_PATH og CHECKOUTTEMPLATE_PATH til at definere særlige templates for kurv og checkout (CJS)
+					ALTER TABLE `TEMPLATES` ADD `CARTTEMPLATE_PATH` TEXT NOT NULL , 
+					ADD `CHECKOUTTEMPLATE_PATH` TEXT NOT NULL
+2006-05-23	*	Oprettet tabel CART_PAYMENTTERMS (CJS)
+					CREATE TABLE CART_PAYMENTTERMS(
+					ID int( 11 ) NOT NULL AUTO_INCREMENT ,
+					TITLE text COLLATE latin1_danish_ci NOT NULL ,
+					PRIMARY KEY ( ID ) 
+					) ENGINE = MYISAM DEFAULT CHARSET = latin1 COLLATE = latin1_danish_ci 
+2006-05-23	-	 function returnFieldValue($tabel, $feltnavn, $a="", $b="") - to sidste parametre er nu optional, så funktionen understøtter udtræk uden kriterier. (MAP)
+2006-05-24	*	Ny tabel CART_ORDERSTATUS
+				CREATE TABLE `CART_ORDERSTATUS` (
+				`ID` INT NOT NULL AUTO_INCREMENT ,
+				`NAME` TEXT NOT NULL ,
+				PRIMARY KEY ( `ID` ) 
+				) TYPE = MYISAM ;
+
+2006-05-24	*	Ny tabel CART_ORDERS_ORDERSTATUS
+				CREATE TABLE `CART_ORDERS_ORDERSTATUS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `ORDER_ID` int(11) NOT NULL default '0',
+				  `ORDERSTATUS_ID` int(11) NOT NULL default '0',
+				  `CHANGED_DATE` int(11) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci AUTO_INCREMENT=1 ;
+2006-05-26	-	File-archive: Tilføjet link på filer i fillisten (MAP)
+2006-05-26	-	Picture-archive: Fjernet beskrivende tekster i FCK-editor vælgeren (MAP)
+2006-05-26	-	FCK-editor - customLink: Tilføjet mulighed for link til lokal fil (MAP)
+2006-05-26	-	ShoppingCart module added (CJS)
+2006-05-26	-	Printvenlig version: Rettet #top -> # (CJS)
+2006-05-26	-	Formeditor: display:none i hjælpetekster (CJS)
+2006-05-26	-	RELEASE: VERSION 2.5.14
+
+2006-05-29	-	Rettet jpg/JPG fejl i dropbox (CJS)
+2006-05-29	*	Tilføjet SHOP tabeller (MAP):
+				CREATE TABLE `SHOP_GROUPDISCOUNTS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `GROUP_ID` int(11) NOT NULL default '0',
+				  `DISCOUNT_PERCENTAGE` float NOT NULL default '0',
+				  `CHANGED_DATE` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds group discounts used in shop';
+
+				CREATE TABLE `SHOP_ORDERDETAILS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `ORDERNUMBER_SEQ` int(11) NOT NULL default '0',
+				  `ORIGINAL_COOKIE_ID` text NOT NULL,
+				  `PRODUCT_ID` int(11) NOT NULL default '0',
+				  `PRODUCT_TABLENAME` text NOT NULL,
+				  `AMOUNT` int(11) NOT NULL default '0',
+				  `FRAGT` float NOT NULL default '0',
+				  `FROZEN_PRODUCTNUMBER` text NOT NULL,
+				  `FROZEN_PRODUCTNAME` text NOT NULL,
+				  `FROZEN_PRODUCTDESCRIPTION` text NOT NULL,
+				  `FROZEN_PRODUCTPRICE` float NOT NULL default '0',
+				  `FROZEN_GROUPDISCOUNT` float NOT NULL default '0',
+				  `FROZEN_COLLIQUANTITY` int(11) NOT NULL default '0',
+				  `FROZEN_COLLIDISCOUNT_PCT` float NOT NULL default '0',
+				  `FROZEN_COLLIDISCOUNT_AMOUNT` float NOT NULL default '0',
+				  `FROZEN_TIME_ADDED` int(11) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+				CREATE TABLE `SHOP_ORDERS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `UNIQUE_ORDERID` text NOT NULL,
+				  `ORDERNUMBER_SEQ` int(11) NOT NULL default '0',
+				  `ORIGINAL_COOKIE_ID` text NOT NULL,
+				  `USER_ID` int(11) NOT NULL default '0',
+				  `NAME` text NOT NULL,
+				  `ADDRESS` text NOT NULL,
+				  `CITY` text NOT NULL,
+				  `ZIPCODE` text NOT NULL,
+				  `PHONE` text NOT NULL,
+				  `CELLPHONE` text NOT NULL,
+				  `FAX` text NOT NULL,
+				  `EMAIL` text NOT NULL,
+				  `COMPANY` text NOT NULL,
+				  `VAT_NUMBER` text NOT NULL,
+				  `ATTENTION` text NOT NULL,
+				  `NOTES` text NOT NULL,
+				  `DELIVERYNAME` text NOT NULL,
+				  `DELIVERYADDRESS` text NOT NULL,
+				  `DELIVERYZIPCODE` text NOT NULL,
+				  `DELIVERYCITY` text NOT NULL,
+				  `FROZEN_PAYMENTTERM` text NOT NULL,
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+				CREATE TABLE `SHOP_PRODUCTGROUPS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `PARENT_ID` int(11) NOT NULL default '0',
+				  `NUMBER` text collate latin1_danish_ci NOT NULL,
+				  `NAME` text collate latin1_danish_ci NOT NULL,
+				  `DESCRIPTION` text collate latin1_danish_ci NOT NULL,
+				  `IMAGE_ID` int(11) NOT NULL default '0',
+				  `PUBLISHED` int(1) NOT NULL default '0',
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci COMMENT='Table to hold shop product groups';
+
+				CREATE TABLE `SHOP_PRODUCTS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `GROUP_ID` int(11) NOT NULL default '0',
+				  `PRODUCT_NUMBER` text collate latin1_danish_ci NOT NULL,
+				  `ALT_PRODUCT_NUMBER` text collate latin1_danish_ci NOT NULL,
+				  `NAME` text collate latin1_danish_ci NOT NULL,
+				  `DESCRIPTION` text collate latin1_danish_ci NOT NULL,
+				  `IMAGE_ID` int(11) NOT NULL default '0',
+				  `QUALITY_ID` int(11) NOT NULL default '0',
+				  `DIAMETER` float NOT NULL default '0',
+				  `LENGTH` float NOT NULL default '0',
+				  `PRICE` float NOT NULL default '0',
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci COMMENT='Table holds shop products';
+
+				CREATE TABLE `SHOP_PRODUCTS_COLLI` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `PRODUCT_ID` int(11) NOT NULL default '0',
+				  `QUANTITY` int(11) NOT NULL default '0',
+				  `DISCOUNT_PERCENTAGE` float NOT NULL default '0',
+				  `DISCOUNT_AMOUNTPERCOLLI` float NOT NULL default '0',
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci COMMENT='Table to hold shop product collis';
+
+				CREATE TABLE `SHOP_PRODUCTS_QUALITIES` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NAME` text collate latin1_danish_ci NOT NULL,
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci COMMENT='Holds shop product qualities';
+2006-05-30	-	Funktioner createCheckbox og createSelectYesNo flyttet fra bookmaker.common.inc til common.inc.php (MAP)
+2006-05-30	-	Funktionen createCheckbox: Sidste (optional) parameter ($coverimage_url_disabled="") omdøbt til $disabled. (MAP)
+2006-05-30	-	Common.inc.php: Tilføjet $cmsAbsoluteServerPath til includes, så det også virker på Adux' server konfiguration (MAP)
+2006-05-31	-	Picturearchive: Tilføjet "Omdøb mappe"-funktion (MAP)
+2006-06-06	-	Bookmaker: Rettet fejl i flyt op/ned funktioner (afgrænsning på book-id + flytte op ved slet position 1) + mindre overskrifts-fejl i rediger funktion (MAP)
+2006-06-06	-	Formeditor: Rettet fejl v/ sletning af felt (rykkede på andre formularers felter) (CJS)
+2006-06-07	*	Tilføjet ORDER_NUMBER felt til CART_ORDERS (MAP)
+				ALTER TABLE  `CART_ORDERS` ADD  `ORDER_NUMBER` TEXT NOT NULL AFTER  `UNIQUE_ORDERID` ;
+2006-06-07	*	Tilføjet tabel SHOP_ORDERSEQ (MAP)
+				CREATE TABLE  `SHOP_ORDERSEQ` (
+				 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+				 `RESERVED_TIME` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+				) ENGINE = MYISAM COMMENT =  'Holds sequence of order numbers. RESERVED_TIME holds time of drawing from seq';
+2006-06-07	-	Common.inc.php: Tilføjet funktion returnImageThumbUrl($image_id) (MAP)
+2006-06-07	+	baseconfig: tilføjet $productDiameterUnit = "mm"; $productLengthUnit = "mm"; (MAP)
+2006-06-12	-	frontend.common: Rettet så fejl på getimagesize() ikke giver fejl i microcart funktion (MAP)
+2006-06-13	+	Tilføjet nyt frontend plugin: Formmailer. Tilhørende tilføjelser i baselanguage + baseconfig (MAP)
+2006-06-13	-	frontend.common: Tilføjet optional parameter til buildpage funktionen, så det er muligt at slå "printervenlig" fra i template (MAP)
+2006-06-14	-	Rettet frontend_common og frontend_pagetop, så frontend-login nu kører på de "nye" tabeller (checker for FE_LOGIN permission) (CJS)	
+2006-06-14	-	Føjet specifik CSS-klasse (newsArchiveNewsLine) til <p> i newsArchive(), og tilsvarende i calendar()-funk (CJS)
+2006-06-14	-	Rettet nogle tags i newsBox()-funk., så den nu validerer (CJS)
+2006-06-14	-	Flyttet funktioner returnImageUrl og returnImageThumbUrl fra common.inc.php til sharedfunctions (MAP)
+2006-06-15	+	Tilføjet $cmsVersion variabel til baseconfig. Denne bruges i metaTagGenerator (se nedenfor) (CJS)
+2006-06-15	-	Ændret metaTagGenerator() i frontend_common, så den nu laver tags til news/events + GENERATOR-tag inkl. $cmsVersion (CJS)
+2006-06-15	-	Billedgalleri: Tilføjet ALT/TITLE tekster til thumbs, så de validerer + det er ret brugervenligt (CJS)
+2006-06-15	-	Rettet pages_index, så menu-dropdown kan håndtere flere sites (CJS)
+2006-06-15	-	Fjernet "MoreManagement" (=> "Instans CMS"), tilføjet version nederst i box + link til brugerprofil hvis CMS_USERS-perm.=true (CJS)
+2006-06-16	*	Tilføjet felt "COLLI_ID" på CART_CONTENTS. Feltet skal bruges til at holde styr på, hvilken colli-størrelse, der postes ned i kurven (CJS)
+				ALTER TABLE `CART_CONTENTS` ADD `COLLI_ID` INT NOT NULL AFTER `PRODUCT_TABLENAME` ;
+2006-06-16	*	Rettet "CVR" til "VAT_NUMBER" på CART_ORDERS (CJS)
+				ALTER TABLE `CART_ORDERS` CHANGE `CVR` `VAT_NUMBER` TEXT CHARACTER SET latin1 COLLATE latin1_danish_ci NOT NULL 
+2006-06-16	*	Tilføjet felt ATTENTION til CART_ORDERS (CJS)
+				ALTER TABLE `CART_ORDERS` ADD `ATTENTION` TEXT NOT NULL ;
+2006-06-16	*	Tilføjet 5 felter til CART_ORDERS, som på mystisk vis manglede. De er mht. lev.addr. og paymentterm (CJS)
+				ALTER TABLE `CART_ORDERS` ADD `PAYMENTTERM` INT NOT NULL ,
+				ADD `DELIVERYNAME` TEXT NOT NULL ,
+				ADD `DELIVERYADDRESS` TEXT NOT NULL ,
+				ADD `DELIVERYZIPCODE` TEXT NOT NULL ,
+				ADD `DELIVERYCITY` TEXT NOT NULL ;
+2006-06-20	-	Frontend.common: Rettet FE login så den submitter v/enter (MAP)
+2006-06-20	-	Frontend.pagetop + frontend.common: Rettet ved login-side + håndtering så den kan bruges direkte i en anden side 
+				+ også her returnerer brugeren til den korrekte side efter login. Index.php er nu fallback, hvis der ikke er andre 
+				steder at sende brugeren hen (mode=login kaldes direkte). Desuden vises login-siden ikke når man allerede er looget ind (erstattet med logudknap) (MAP)
+2006-06-21	-	Frontend.common: Rettet fuktionen printerFriendly så den validerer uden warnings. (MAP)
+2006-06-21	-	Frontend.common: TIlføjet funktionen modeHtmlHeaderIncludes($type) til brug i templates. Funktionen sørger for at inkludere modul-specifikke css/js filer (MAP)
+2006-06-23	-	Søgefunktionen forbedret med ranking og søgning af produkttabel. Desuden nu korrekt highlighting + snippeting. (MAP)
+2006-06-26	-	CMS moduler implementeret: Shop frontend, shop products, shop productgroups, shop groupdiscounts. (MAP)
+2006-06-26	*	3 rettelser mht. CART tabellerne (CJS)
+				ALTER TABLE `CART_CONTENTS` ADD `CART_ORDERS_ID` INT NOT NULL AFTER `ID` ;		
+				ALTER TABLE `CART_ORDERS` ADD `DELETED` TINYINT NOT NULL ;
+				ALTER TABLE `CART_ORDERS` DROP `ORDER_NUMBER` ;
+2006-06-26	-	RELEASE: VERSION 2.5.15
+
+2006-06-27	+	Baseconfig: Tilføjet $showDeliveryDateInCart, som vælger, om der skal vises lev. tid. i CART (CJS)
+2006-06-27	-	Tilføjet "$total" variabel til call_user_func kaldet i forbindelse med total-fragt-beregning (CJS)
+2006-06-27	-	Søgefunktion: Finder kun varer i varegrupper som er publiserede (MAP)
+2006-06-26	-	RELEASE: VERSION 2.5.16
+
+2006-06-28	-	Sharedfunctions.php : rettet returnTilmeldingsHTML og returnTilmeldingsPlainText, så de returnerer <ul> lister (CJS)
+2006-06-28	-	Frontend_common: parseSubmittedForm returnerer nu en HTML-mail (CJS)
+2006-06-28	-	Frontend-common: Lavet newReturnHtmlMenuPath funktion, som IKKE returnerer <div id='menupath'> - bedre til template-brug (CJS)
+2006-06-30	-	Frontend-common: Rettet fejl så søgning på æøå også finder htmlentities og så alle links bliver konvereteret til pseuro-links (MAP)
+2006-07-03	-	Rettet class-ting i shopProductMenu, så den hi-lighter korrekt (CJS)
+2006-07-03	-	Ændret et par ord i baseLanguage mht. frontend plugin FormMailer ("Der opstod en fejl" i stedet for "FEJL!", m.m.) (CJS)
+2006-07-03	-	newFrontendMenu: Rettet fejl, så der ikke kommer class='' ved ikke-valgte punkter (CJS)
+2006-07-03	-	newFrontendMenu: Rettet fejl, så der ikke kommer en tom <ul></ul>, hvis et punkt har underpkt. der er kladde (CJS)
+2006-08-02	-	Tilføjet 1-produkt visning i shop + tilpasset søgefunktion hertil. (MAP)
+2006-08-02	-	Rettet <ul> fejl i produktmenu v/tomme undergrupper (CJS)
+2006-08-02	-	Rettet fejl så SEO custom title gemmes korrekt ved redigering (MAP)
+2006-08-02	-	RELEASE: VERSION 2.5.17
+
+2006-08-03	-	Rettet fejl i Pages/søgeoptimering, så rettet custom sidetitel bliver gemt korrekt. (MAP)
+2006-08-03	-	Diverse ændringer i NEWSLETTERS tabellen - SQL følger når ændrigner er stabile (MAP)
+2006-08-03	*	Tilføjet kolonne TYPE i TEMPLATES tabellen (MAP)
+				ALTER TABLE  `TEMPLATES` ADD  `TYPE` TEXT NOT NULL
+2006-08-03	-	common.inc.php/buildtemplatedropdown: Tilføjet TYPE parameter, så listen kun indeholder relevante templates + rettet valideringsfejl (MAP)
+2006-08-03	-	Gamle "forklarende" tekster er fjernet fra pages, news, events mfl. (MAP)
+2006-08-03	-	common.inc.php/buildLanguageDropdown: Tilføjet CLASS parameter (MAP)
+2006-08-04	-	db/NEWSLETTER_TEMPLATES_CATEGORYGROUPS: Ny tabel til intersection mellem newsletter templates og newsletter category groups (MAP)
+2006-08-04	-	db/NEWSLETTER_HISTORY: Ny tabel til newsletter history (MAP)
+2006-08-09	-	common.inc.php+pages.common: Rettet småting vedr. validering & => &amp;, uafsluttede input tags og lign. (MAP)
+2006-08-09	-	Pages/addRelatedEvent: Rettet slåfejl, der gjorde at man ikke kunne vedhæfte en event (MAP)
+2006-08-10	-	db/NEWSLETTER_TEMPLATES_USERGROUPS: Ny tabel til intersection mellem newsletter templates og user groups (MAP)
+2006-08-10	-	db/NEWSLETTER_TEMPLATES_USERS: Ny tabel til intersection mellem newsletter templates og users (subscribers) (MAP)
+2006-08-10	-	common.inc/niceTableListing ny funktion (CJS)
+2006-08-11	-	db/NEWSLETTER_OPTOUT: Ny tabel (MAP)
+2006-08-11	*	db/GROUPS: Nyt felt (MAP)
+				ALTER TABLE  `GROUPS` ADD  `HIDDEN` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  'Hide group from all lists' AFTER  `UNFINISHED` ;				
+2006-08-11	-	common.inc+shopgroupdiscounts.common.inc: Rettet en række funktioner så de ikke trækker HIDDEN groups ud. (MAP)
+2006-08-11	*	db/GENERAL_SETTINGS: Nyt felt (MAP)
+				ALTER TABLE  `GENERAL_SETTINGS` ADD  `NEWSLETTER_GROUPID` INT NULL COMMENT  'Holds ID of the usergroup containing newsletter subscribers';
+2006-08-15	*	db/NEWSLETTERS_RECIPIENTS: dropped (MAP)
+				DROP TABLE  `NEWSLETTERS_RECIPIENTS` ;
+2006-08-15	*	db/NEWSLETTERS: dropped old version (MAP)
+				DROP TABLE  `NEWSLETTERS` ;
+2006-08-15	-	db/NEWSLETTERS: new table (MAP)
+2006-08-17	-	Ny tabel NEWSLETTER_CATEGORIES til nyhedsbrev:
+2006-08-17	-	Ny tabel NEWSLETTER_CATEGORYGROUPS til nyhedsbrev:
+2006-08-17	-	Ny tabel NEWSLETTER_CATEGORIES_OPTOUT  til nyhedsbrev:
+2006-08-17	*	Rettelse på USERS: Nyt felt:
+				ALTER TABLE `USERS` ADD `EMAIL_VERIFIED` TINYINT NOT NULL ;
+2006-08-18	-	Rettelse på NEWSLETTER_TEMPLATES_USERS: 2 nye felter til unsub.
+2006-08-21	-	3 nye felter i NESWSLETTER_TEMPLATES:
+2006-08-21	-	db/NEWSLETTER_HISTORY nyt felt til at registrere HVEM der har sendt mailen ud (MAP):
+2006-08-22	*	Nyt felt til e-mail-domæne på SITES-tabellen:
+				ALTER TABLE `SITES` ADD `EMAIL_DOMAIN` TEXT NOT NULL ;			
+2006-08-22	-	db/NEWSLETTERS: Nyt felt til billed positionering (MAP):
+2006-08-28	-	db/NEWSLETTER_ITEMS:
+2006-08-28	-	db/NEWSLETTER_ITEMS: Tilføjet 2 felter:
+2006-08-29	*	db/TEMPLATES: Tilføjet 1 felt, som bruges til at gemme "prefix"/folder-navnet for templates og subtemplates, i første 
+				omgang kun til Smarty-brug (nyhedsbrev):
+				ALTER TABLE `TEMPLATES` ADD `FOLDER_NAME` TEXT NOT NULL ;
+2006-08-29	-	db/NEWSLETTER_ITEMS: Tilføjet DELETED kolonne:
+2006-08-30	*	db/USERS: Nyt felt til firma:
+				ALTER TABLE `USERS` ADD `COMPANY` TEXT NOT NULL AFTER `CV` ;
+2006-08-30	-	db/NEWSLETTER_TEMPLATES_FORMFIELDS tabel til form-felter på tilmeldingsform:
+2006-08-30	-	Ny variabel i config: $newsletter_allowed_db_fields_on_form (som afgør, hvilke felter fra USERS der må være på subscribeform) (CJS)
+2006-08-31	-	db/NEWSLETTER_NEWSLETTER_CATEGORIES: Ny tabel (MAP)
+2006-08-31	-	db/NEWSLETTER_NEWSLETTER_CATEGORIES: Tilføjet USER_ID kolonne(MAP)
+2006-08-30	-	$newsletter_allowed_db_fields_on_form fjernet igen
+2006-09-04	-	db/NEWSLETTER_FORMFIELDS
+2006-09-05	-	db/NEWSLETTER_FORMFIELDS: Added ID_COLUMN_NAME (MAP)
+2006-09-06	-	db/NEWSLETTER_TEMPLATES: Added BOUNCETO_EMAIL (MAP)
+2006-09-07	-	db/NEWSLETTER_HISTORY: Renamed table SENT_TIME to SENDOUT_BEGINTIME + changed datatype to TIMESTAMP + added 4 new columns (MAP)
+2006-09-07	-	db/NEWSLETTER_HISTORY_MAILLOG: Ny tabel (MAP)
+2006-09-07	-	db/Dropped 3 obsolete tables - all replaced by NEWSLETTER_SUBUSCRIBTIONS (MAP)
+2006-09-08	-	db/NEWSLETTER_TEMPLATES: Nyt felt (MAP)
+2006-09-12	-	db/NEWSLETTER_HISTORY: Nyt felt (MAP)
+2006-09-12	-	USERS: Brugere SKAL være placeret i mindst én gruppe når man opretter/redigerer. (MAP)
+2006-09-13	-	db/NEWSLETTER: Nyt felt `ARCHIVE_TITLE` (MAP)
+2006-09-13	-	frontend.common: Rettet fejl i menu-sti v/mode=events (MAP)
+2006-09-19	-	db/NEWSLETTER TEMPLATES: Nyt felt så nyhedsbrevmodulet nu er site-specifikt. Interessegrupper deles fortsat mellem sites. (MAP)
+2006-09-28	+	Ny var. i baseconfig: $newsarchive_newsPerPage til offset i nyhedsarkiv (CJS)
+2006-09-28	+	Baselanguage-var. NewsArchiveNextPage, NewsArchivePrevPage (CJS)
+2006-09-28	-	Følgende fejl rettet: 
+					- Fejl i sti til sider, som ikke er publiceret
+					- Fejl ved rettigheder: i cms kan man nu vælge, om sub-sider skal nedarve rettigheder
+					- EMAIL_DOMAIN fra db bliver nu brugt i parseSubmittedForm og sendNewUserMail
+					- Rettet: Problem med at vedhæfte relaterede filer til nyheder / events 
+					- Rettet: Problem med at vedhæfte relateret indhold til nyheder / events 
+					- Rettet: Checke for, om der allerede findes en bruger med samme brugernavn (via Ajax)
+					- Rettet: Form-editor: Fejl ved CSV hvis navnet på formen indeholder et "?" eller " eller '
+					- Rettet: Sider: Brugerdefinerede bokse under rel. indhold viser boks, der ikke findes (tilføjet WHERE DELETED=0)
+					- Tilføjet: Offset på nyhedsarkiv 
+					- Tilføjet: TITLE-attributter på nyheder / events i arkiv
+2006-09-28	*	db/NEWS_NEWSLETTERS: dropped (MAP)
+				DROP TABLE  `NEWS_NEWSLETTERS`
+2006-09-28	*	db/NEWSLETTERS_RECIPIENTS: dropped (MAP)
+				DROP TABLE  `NEWSLETTERS_RECIPIENTS`
+2006-09-28	*	db/CJS_TEST: dropped (MAP)
+				DROP TABLE  `CJS_TEST`
+2006-09-28	*	db/Newsletter tabeller - her er komplet dump. Denne erstatter alle tidligere cms_history entries vedr. disse tabeller under denne version (MAP)
+				-- 
+				-- Table structure for table `NEWSLETTERS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTERS`;
+				CREATE TABLE `NEWSLETTERS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `ARCHIVE_TITLE` text NOT NULL,
+				  `TITLE` text NOT NULL,
+				  `CONTENT_TOP` text NOT NULL,
+				  `CONTENT_BOTTOM` text NOT NULL,
+				  `IMAGES_DISPLAY` text NOT NULL COMMENT 'Value is: NONE, LEFT, RIGHT or ALTERNATING',
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  `PROOF_TO` text NOT NULL COMMENT 'Holds e-mail adress to recieve the proof',
+				  `APPROVED` tinyint(1) NOT NULL default '0' COMMENT 'Only approved newsletters can be sent out',
+				  `APPROVED_BY` int(11) NOT NULL default '0',
+				  `APPROVED_TIME` text NOT NULL,
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_CATEGORIES`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_CATEGORIES`;
+				CREATE TABLE `NEWSLETTER_CATEGORIES` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `GROUP_ID` int(11) NOT NULL default '0',
+				  `NAME` text NOT NULL,
+				  `DELETED` tinyint(4) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_CATEGORIES_OPTOUT`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_CATEGORIES_OPTOUT`;
+				CREATE TABLE `NEWSLETTER_CATEGORIES_OPTOUT` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  `USER_ID` int(11) NOT NULL default '0',
+				  `CATEGORY_ID` int(11) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_CATEGORYGROUPS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_CATEGORYGROUPS`;
+				CREATE TABLE `NEWSLETTER_CATEGORYGROUPS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NAME` text NOT NULL,
+				  `DELETED` tinyint(4) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_FORMFIELDS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_FORMFIELDS`;
+				CREATE TABLE `NEWSLETTER_FORMFIELDS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `FIELD_NAME` text NOT NULL,
+				  `TABLE_NAME` text NOT NULL,
+				  `ID_COLUMN_NAME` text NOT NULL,
+				  `TEMPLATE_TAG` text NOT NULL,
+				  `POSITION` int(11) NOT NULL default '0',
+				  `TEMPLATETAG_ONLY` tinyint(4) NOT NULL default '0',
+				  `CMS_LABEL` text NOT NULL,
+				  `DEFAULT_VALUE` text NOT NULL COMMENT 'Holds $cmsLang[key]-key for translating',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_HISTORY`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_HISTORY`;
+				CREATE TABLE `NEWSLETTER_HISTORY` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NEWSLETTER_ID` int(11) NOT NULL default '0',
+				  `TEMPLATE_ID` int(11) NOT NULL default '0' COMMENT 'newsletter_templates.id',
+				  `USER_ID` int(11) NOT NULL default '0' COMMENT 'id of user who sent the mail',
+				  `NO_RECIPIENTS` int(11) NOT NULL default '0',
+				  `SENDOUT_BEGINTIME` timestamp NOT NULL default CURRENT_TIMESTAMP,
+				  `SENDOUT_COMPLETETIME` timestamp NOT NULL default '0000-00-00 00:00:00',
+				  `SENDOUT_SUBJECT` text NOT NULL,
+				  `SENDOUT_HTML` text NOT NULL,
+				  `SENDOUT_PLAINTEXT` text NOT NULL,
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds history of newsletter mailings';
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_HISTORY_MAILLOG`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_HISTORY_MAILLOG`;
+				CREATE TABLE `NEWSLETTER_HISTORY_MAILLOG` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `HISTORY_ID` int(11) NOT NULL default '0',
+				  `USER_ID` int(11) NOT NULL default '0',
+				  `SENDOUT_COMPLETED` tinyint(1) NOT NULL default '0',
+				  `SENDOUT_COMPLETETIME` timestamp NOT NULL default '0000-00-00 00:00:00',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds log of every mail sent to users through the newsletter';
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_ITEMS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_ITEMS`;
+				CREATE TABLE `NEWSLETTER_ITEMS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `CREATED_BY` int(11) NOT NULL default '0',
+				  `TEMPORARY` int(11) NOT NULL default '0',
+				  `NEWSLETTER_ID` int(11) NOT NULL default '0',
+				  `ORIGINAL_ID` int(11) NOT NULL default '0',
+				  `ORIGINAL_TYPE` text NOT NULL,
+				  `HEADING` text NOT NULL,
+				  `CONTENT` text NOT NULL,
+				  `IMAGEMODE` text NOT NULL,
+				  `IMAGEURL` text NOT NULL,
+				  `LINKMODE` text NOT NULL,
+				  `LINKURL` text NOT NULL,
+				  `POSITION` int(11) NOT NULL default '0',
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds newsletter items';
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_NEWSLETTER_CATEGORIES`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_NEWSLETTER_CATEGORIES`;
+				CREATE TABLE `NEWSLETTER_NEWSLETTER_CATEGORIES` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NEWSLETTER_ID` int(11) NOT NULL default '0',
+				  `CATEGORY_ID` int(11) NOT NULL default '0',
+				  `USER_ID` int(11) NOT NULL default '0' COMMENT 'NOTE! This holds user_id of user who created intersection from newsletter. Used for deleting temporary items',
+				  `TEMPORARY` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds association of categories to newsletter';
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_SUBSCRIPTIONS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_SUBSCRIPTIONS`;
+				CREATE TABLE `NEWSLETTER_SUBSCRIPTIONS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `USER_ID` int(11) NOT NULL default '0',
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  `SUBSCRIBED` tinyint(4) NOT NULL default '0',
+				  `CHANGED_DATE` int(11) NOT NULL default '0',
+				  `CONFIRMED` tinyint(4) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_TEMPLATES`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_TEMPLATES`;
+				CREATE TABLE `NEWSLETTER_TEMPLATES` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `OPEN_FOR_SUBSCRIPTIONS` tinyint(1) NOT NULL default '0',
+				  `SHOW_IN_NEWSARCHIVE` tinyint(1) NOT NULL default '0',
+				  `REQ_EMAIL_VALIDATION` tinyint(1) NOT NULL default '0',
+				  `SENDER_NAME` text NOT NULL,
+				  `SENDER_EMAIL` text NOT NULL,
+				  `REPLYTO_EMAIL` text NOT NULL,
+				  `BOUNCETO_EMAIL` text NOT NULL,
+				  `SUBSCRIPTIONPAGE_TEXTTOP` text NOT NULL,
+				  `SUBSCRIPTIONPAGE_TEXTBOTTOM` text NOT NULL,
+				  `SUBSCRIPTIONPAGE_TEXTTHANKS` text NOT NULL,
+				  `LANGUAGE_ID` int(11) NOT NULL default '0',
+				  `SITE_ID` int(11) NOT NULL default '0',
+				  `TEMPLATE_ID` int(11) NOT NULL default '0' COMMENT 'Refers to a template in the TEMPLATES table',
+				  `TITLE` text NOT NULL,
+				  `DELETED` tinyint(1) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_TEMPLATES_CATEGORYGROUPS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_TEMPLATES_CATEGORYGROUPS`;
+				CREATE TABLE `NEWSLETTER_TEMPLATES_CATEGORYGROUPS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  `CATEGORYGROUP_ID` int(11) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_TEMPLATES_FORMFIELDS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_TEMPLATES_FORMFIELDS`;
+				CREATE TABLE `NEWSLETTER_TEMPLATES_FORMFIELDS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  `FIELD_ID` int(11) NOT NULL default '0',
+				  `MANDATORY` tinyint(4) NOT NULL default '0',
+				  KEY `ID` (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `NEWSLETTER_TEMPLATES_USERGROUPS`
+				-- 
+				
+				DROP TABLE IF EXISTS `NEWSLETTER_TEMPLATES_USERGROUPS`;
+				CREATE TABLE `NEWSLETTER_TEMPLATES_USERGROUPS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `GROUP_ID` int(11) NOT NULL default '0',
+				  `TEMPLATE_ID` int(11) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+2006-09-28	-	RELEASE: VERSION 2.5.18
+
+2006-09-29	-	NEWS: Rettet gemRow så der altid kommer language på (af hensyn til bl.a. søgefunktion).
+
+2006-10-03	*	DROP TABLE `GROUPS_MENUENTRIES`;
+2006-10-03	*	DROP TABLE `USERS_RIGHTS`;
+2006-10-03	-	Fjernet følgende funktioner: gruppeOversigtShortMenuEntry, setRecursiveMenuGroups, samt menuEntries-delen af gemRow()
+2006-10-03	-	Rettet ting fra Jakobs rapport, tabs i Brugere-funktionen, ghosted "slet" knap ved egen bruger, overskrifter på diverse sider, ekstra felter på USERS
+2006-10-03	*	ALTER TABLE `USERS` ADD `INITIALS` TEXT NOT NULL ,
+				ADD `DATE_OF_BIRTH` DATE NOT NULL ,
+				ADD `DATE_OF_HIRING` DATE NOT NULL ,
+				ADD `DEPARTMENT` TEXT NOT NULL ,
+				ADD `JOB_TITLE` TEXT NOT NULL ;
+2006-10-17	-	newsletter.common -> sendout.cleanup: Tilføjet addslashes til sql. (MAP)
+2006-10-17	-	newsletter.common -> returnNewsarchiveUrl: Ændret til at pege på /includes/shownewsletter.php (MAP)
+2006-10-17	-	newsletter.common -> newsletter_build: $newsarchive_url bliver nu assignet til den rigtige (main) template (MAP)
+2006-10-17	-	newsletter.common -> returnNewsarchiveUrl: Tilføjet get-variabel: ticket (MAP)
+2006-10-17	-	/includes/shownewsletter.php: Checker nu for korrekt ticket når nyhed ikke vises i arkiv. (MAP)
+2006-10-17	-	newsletter.common -> returnNewsletterItemArray+update_newsletter_urls: Site bliver nu taget fra NEWSLETTER_TEMPLATE istedet for session, så absolutte links også virker udenfor cms (MAP)
+2006-10-18	-	function relatedBox: tilføjet SQL ... "and REL_TABEL!='CUSTOM_BOXES'" (CJS)
+2006-11-06	-	Frontend: Tilføjet titles på links i newBuildFrontEndMenu() (CJS)
+2006-11-08	*	Newsletter: (CJS)
+				ALTER TABLE `NEWSLETTERS` ADD `SHOW_INDEX` TINYINT NOT NULL ;
+2006-11-08	-	Tilføjet mulighed for at til- og fravælge indholdsfortegn. i nyhedsbrev - rettet i newsletter_common (CJS)	
+2006-11-10	-	Newsletter: Udkommenteret newsletter_update_name() i actions-filen (CJS)
+2006-11-10	-	Shownewsletter.php: tilføjet $defaultLanguage, så siden virker, selv om vores site ikke har været "kørt" (CJS)
+2006-11-20	*	Parent_ID på billedarkiv (CJS):
+				ALTER TABLE `PICTUREARCHIVE_FOLDERS` ADD `PARENT_ID` INT NOT NULL ;
+2006-11-21	-	Picturearchive: Ajax-udtræk-funtioner (undtagen vedhæft galleri / pages) understøtter nu undermapper (MAP)
+2006-11-22	-	Picturearchive: Implementeret det nye billedarkiv (CJS)
+2006-11-23	-	Newsletter frontend: Funktionen showNewsletterArchive rettet så den ikke returnerer noget hvis valgte arkiv ikke er offentligt (MAP)
+2006-11-23	-	Newsletter template: Rettet fejl med ja/nej "Visning i arkiv" (MAP)	
+2006-11-23	-	Newsletter frontend: Nu bliver confirm e-mail sendt ud igen hvis man prøver at tilmelde sig et nyhedsbrev igen, som man ikke har bekræftet (MAP)
+2006-11-24	-	Images-mappen i /includes: Tilføjet filtype-ikoner (CJS)
+2006-11-28	*	FormEditor: DEFINED_FORMS: 2 felter til mapping: (CJS)
+				ALTER TABLE `DEFINED_FORMS` ADD `MAPPED_NEWSLETTER_ID` INT NOT NULL ,
+				ADD `MAPPED_USERGROUP_ID` INT NOT NULL ;
+2006-11-28	*	FormEditor: DEFINED_FORMFIELDS: 1 felt til mapping: (CJS)
+				ALTER TABLE `DEFINED_FORMFIELDS` ADD `MAPPED_FIELD_ID` INT NOT NULL ;
+2006-11-28	*	FormEditor: DEFINED_FORMFIELDS: 1 felt til mapping / låsning af mappede felter: (CJS)
+				ALTER TABLE `DEFINED_FORMFIELDS` ADD `LOCKED` TINYINT NOT NULL ;
+2006-11-30	-	Shared-functions: function returnUserName($user_id) returnerer "" hvis ikke fundet (MAP)
+2006-12-05	-	Indbygget mulighed for flere sites i FCK-plugin CustomImage ($cms_basepath = returnBASE_URL($cmsSiteId) + ændring i imageClicked / folderClicked) (MP)
+2006-12-05	+	Ny variabel i cms_config og cms_baseconfig: $cmsSiteId, som indeholder ID på det site, hvorfra CMS skal afvikles (MP)
+2006-12-06	+	Ny variabel i cms_config og cms_baseconfig: $useModRewrite som sættes til true hvis url'er skal omskrives, defalut er false (MAP)
+2006-12-06	-	Tilføjet rewrite keyword adresse under sideredigering -> søgeoptimering i CMS - funktioner ligger i sharedfunctions og pages_common samt pages_script (CJS)
+2006-12-08	-	Rettet en masse funktioner i frontend-common og cms modulernes frontend. Formål: Omlægning af siderendering til at udelukkende at basere sig på $arr_content og dermed muliggøre mod-rewrite af links. (MAP)
+2006-12-08	-	Alle links og form actions (i hvert fald i modulerne pages, news og events) omlagt til absolutte links baseret på $arr_content[baseurl] (MAP)
+2006-12-08	*	Rewrite er implementeret for mode pages, news, events (MAP)
+				CREATE TABLE IF NOT EXISTS `REWRITE_KEYWORDS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `KEYWORD` text NOT NULL COMMENT 'Keyword which will appear in the URL',
+				  `TABLENAME` text NOT NULL COMMENT 'Name of table for data lookup',
+				  `REQUEST_ID` int(11) NOT NULL default '0' COMMENT 'ID to look-up in TABLENAME',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds keywords for rewriting URLs';
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `REWRITE_METHODS`
+				-- 
+				
+				CREATE TABLE IF NOT EXISTS `REWRITE_METHODS` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NAME` text NOT NULL COMMENT 'Method to run on content, will optionally appear as last part of URLs ',
+				  `INTERNALNAME` text NOT NULL,
+				  `LANGUAGE_ID` int(11) NOT NULL default '0' COMMENT 'Used when rewriting urls to ensure correct language',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+				
+				-- --------------------------------------------------------
+				
+				-- 
+				-- Table structure for table `REWRITE_MODES`
+				-- 
+				
+				CREATE TABLE IF NOT EXISTS `REWRITE_MODES` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `NAME` text NOT NULL COMMENT 'Modename which will appear in URLS',
+				  `INTERNALNAME` text NOT NULL COMMENT 'Site-internal modename',
+				  `LANGUAGE_ID` int(11) NOT NULL default '0' COMMENT 'Used when rewriting urls to ensure correct language',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds MODES for rewriting URLs';
+
+2006-12-08	-	Redigering af rewrite keywords er implementeret for mode pages, news, events (CJS)
+2006-12-08	-	Example template tilrettet, så den understøtter den nye struktur. Desuden stor oprydning i frontend-common. (MAP)
+2006-12-08	-	Ikke længere bagud-kompatibel med den gamle nyhedsbrev-funktion og templates fra version 2.5.18 og tidligere skal skrives om med ekstra parametre (primært $arr_content) på mange funktioner. (MAP)
+2006-12-08	-	RELEASE: VERSION 2.6
+
+2006-12-08	-	Tilføjet mulighed for PNGimagetag replacement i frontend-common:render_page_content + tilføjet $replacePNGimages setting til baseconfig (default = false)
+2006-12-08	-	Rettet lille onLoad fejl i news_script.js og events_script.js der gav js error i oversigt (MAP)
+2006-12-11	-	Tilføjet mode+method rækker i REWRITE_KEYWORDS, så disse "reserverede" ord ikke kan bruges. Disse tilføjet dok:nyinstans.txt (MAP)
+2006-12-11	-	Rewrite fuktionen savekeyword gemmer nu ikke tomme keywords og sletter keywords hvis de forsøges erstattet med et tomt (MAP)
+2006-12-11	-	RELEASE: VERSION 2.6.1
+
+2006-12-11	-	returnPageTitleTag: Rettet fejl så nyhedstitel vises i title tag (CJS)
+2006-12-12	-	Module News: Rettet fejl i news_index.php: forkert tabel angivet v/rewrite suggest (MAP)
+2006-12-12	-	formeditor2_viewdata.php: Kunne ikke finde sessions mappen, så nu inkluderer den config.inc (MAP)
+2006-12-13	-	frontend-common: Rettet fejl ved frontend login introduceret med omlægning til $arr_content i version 2.6. (MAP)
+2006-12-13	-	Rettet i module cart+shop: Redirect fejl hvor Safari gik i loop, [browse] rettigheden nu krævet for at se kurv (hvis slået til), actions og index omlagt til at benytte $arr_content istedet for $_POST/$_REQUEST (MAP)
+2006-12-13	-	return_content_build_array tager nu også $_POST variabler med i arrayet (MAP)
+2006-12-13	-	Rettet småting i formGenerator ("/>" og &amp;) og returnTitleTag (CJS)
+2006-12-14	-	frontend_common:returnOrderSummary tilføjet korrekt sti til form action (MAP)
+2006-12-14	-	CMS/USERS - rettet fejl i SQL ved visning af userliste (CJS/MAP)
+2006-12-15	*	Shop: Rettet fejl, så orderstatus bliver sat korrekt ved ordreafgivelse (MAP)
+				ALTER TABLE  `CART_ORDERS_ORDERSTATUS` CHANGE  `CHANGED_DATE`  `CREATED_DATE` INT( 11 ) NOT NULL DEFAULT  '0' ;
+2006-12-15	*	Shop: Tilføjet mulighed for at begrænse betalingsmuligheder på PERMISSION basis (CJS)
+				ALTER TABLE `CART_PAYMENTTERMS` ADD `PERMISSION` TEXT NOT NULL ;
+2006-12-15	*	Shop: Tilføjet liste-visning til shop-varegrupper
+				ALTER TABLE  `SHOP_PRODUCTGROUPS` ADD  `LISTMODE` TINYINT( 1 ) NOT NULL DEFAULT  '1';
+2006-12-15	*	Shop: Tilføjet ekstra felter til produktoprettelse + implementeret valg af felter pr. varegruppe (MAP)
+				ALTER TABLE  `SHOP_PRODUCTS` ADD  `DESCRIPTION_COMPLETE` TEXT NOT NULL ,
+					ADD  `URL_EXT_INFO` TEXT NOT NULL ,
+					ADD  `URL_EXT_PRODUCTSHEET` TEXT NOT NULL ;
+2006-12-15	*	CREATE TABLE  `SHOP_PRODUCTGROUPS_FORMFIELDS` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `PRODUCTGROUP_ID` INT NOT NULL ,
+						 `FIELDNAME` TEXT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds information on which formfields to show for each productgroup';
+2006-12-15	-	Mindre ændringer i shop+cart, desuden tilføjet ekstra sprogvariabler i baselanguage (MAP)
+2006-12-15	-	RELEASE: VERSION 2.6.2
+
+2006-12-15	-	frontend_common:function returnFirstPageInMenuPlaceholder($pageId): Rettet SQL fejl. (MAP)
+2006-12-15	-	frontend_common:function check_method: Returnerer nu værdi ved 1 method parameter, array af værdier ved flere method parametre og false hvis method ikke eksisterer (MAP)
+2006-12-15	+	includes/download.php sender nu contenttype header hvis der er defineret en mimetype i FILEARCHIVE_FILES tabellen - fix for Safari (MAP)
+2006-12-18	-	returnSearchResults: Ændret i scoring for PAGES så META_ felter vægtes lavere end egl. indhold (MAP)
+2006-12-19	-	newsletter/common: Rettet fejl så nyhedsbrev permalink peger på korrekt nyhedsbrevsid (ikke på template id) + undgår at <body>-tag kommer ud to gange (MAP)
+2006-12-19	+	Opdateret shownewsletter.php med fejlrettelser så korrekt titel vises + checker korrekt for permissions (MAP)
+2006-12-19	-	Rettet bug i events, hvor man også låste for sig selv ved at vinge af i "kan kun rettes af mig" (CJS)
+2006-12-19	-	Rettet bug i brugerOversigt funktionen - sql fejl hvis ikke defineret nyhedsbrev id i GENERAL SETTINGS (CJS)
+2006-12-19	-	RELEASE: VERSION 2.6.3
+
+2007-01-05	-	Tilføjet korrekt mappe-sti i filarkiv_common -> filMappeListe() (CJS)
+2007-01-05	*	Billedarkiv: Nyt felt på PICTUREARCHIVE_FOLDERS (CJS)
+				ALTER TABLE `PICTUREARCHIVE_FOLDERS` ADD `PUBLIC_FOLDER` TINYINT NOT NULL ;
+
+2007-01-09	*	Billedarkiv: 2 nye felter på PICTUREARCHIVE_FOLDERS (CJS)
+				ALTER TABLE `PICTUREARCHIVE_FOLDERS` ADD `FOLDER_DESCRIPTION` TEXT NOT NULL ,
+				ADD `THUMBMODE` TEXT NOT NULL COMMENT 'NEWEST eller FIRSTPOS'; 
+
+2007-01-09	-	picturearchive_common: function gemBilledMappe($mappenavn, $userid="", $parentid="") tilføjet optional parameter $parentir (MAP)
+2007-01-09	+	Ny variabel i cms_baseconfig: $gallery_showMaxLevels - holder styr på, hvor mange niveauer af billedmapper, der vises i "mode=picturearchive" (CJS)
+2007-01-10	*	Nyt felt på PICTUREARCHIVE_PICS, som indeholder antal visninger (CJS)
+				ALTER TABLE `PICTUREARCHIVE_PICS` ADD `VIEW_COUNT` INT NOT NULL ;
+2007-01-11	*	Nye felter på GROUPS til at indikere, at brugere selv kan oprette sig / redigere sig (CJS)
+				ALTER TABLE `GROUPS` ADD `REGISTRATION_OPEN` TINYINT NOT NULL ;
+				ALTER TABLE `GROUPS` ADD `EDITING_OPEN` TINYINT NOT NULL ;
+				
+				ALTER TABLE `GROUPS` ADD `NOTIFY_USER_ID` INT NOT NULL ,
+				ADD `LANDING_GROUP_ID` INT NOT NULL ;
+2007-01-11	+	Ny var. i baseconfig: $dbfields_excluded, som indeholder felter, der aldrig må udfyldes af bruger på frontend (CJS)
+
+2007-01-11	*	NY TABEL til PICTUREARCHIVE dropbox import (MAP):
+				CREATE TABLE `PICTUREARCHIVE_IMPORTQUE` (
+				  `ID` int(11) NOT NULL auto_increment,
+				  `BATCH_NUMBER` int(11) NOT NULL default '0',
+				  `TARGET_GROUP` int(11) NOT NULL default '0',
+				  `PATH` text NOT NULL,
+				  `NAME` text NOT NULL,
+				  `EXTENSION` text NOT NULL,
+				  `SIZE` int(11) NOT NULL default '0',
+				  `PROCESSED` tinyint(1) NOT NULL default '0',
+				  PRIMARY KEY  (`ID`)
+				) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Holds import que used when importing images from dropbox';
+2007-01-11	+	Ny var. i baseconfig, defaultværdier til brug i billedarkiv (MAP):
+					$imageThumbSize = 50;
+					$imageStandardSize = 600;
+					$imageOriginalMinsize = 750;
+2007-01-11	*	Nyt felt på PICTUREARCHIVE_PICS, som angiver om original er gemt (MAP)
+				ALTER TABLE  `PICTUREARCHIVE_PICS` ADD  `ORIGINAL_ARCHIVED` TINYINT( 1 ) NOT NULL DEFAULT  '0';
+2007-01-11	*	Ny tabel GROUPS_FORMFIELDS (CJS)
+				CREATE TABLE `GROUPS_FORMFIELDS` (
+				`ID` int( 11 ) NOT NULL AUTO_INCREMENT ,
+				`GROUP_ID` int( 11 ) NOT NULL default '0',
+				`FIELD_ID` int( 11 ) NOT NULL default '0',
+				`MANDATORY` tinyint( 4 ) NOT NULL default '0',
+				KEY `ID` ( `ID` ) 
+				) ENGINE = MYISAM DEFAULT CHARSET = latin1;
+2007-01-15	*	Ny tabel SHOP_PRODUCTS_GROUPS (MAP):
+				CREATE TABLE  `SHOP_PRODUCTS_GROUPS` (
+				 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+				 `PRODUCT_ID` INT NOT NULL ,
+				 `GROUP_ID` INT NOT NULL
+				) ENGINE = MYISAM COMMENT =  'Holds product-group association';
+2007-01-15	*	Bemærk dette betyder at eksisterende produkter skal konverteres med følgende kode (MAP) (findes i cms_utilities/convert_productgroups.php):
+				$sql = "select * from SHOP_PRODUCTS";
+				$res = mysql_query($sql);
+				while ($row = mysql_fetch_assoc($res)) {
+					$sql = "insert into SHOP_PRODUCTS_GROUPS (PRODUCT_ID, GROUP_ID) values ($row[ID], $row[GROUP_ID])";
+					if (mysql_query($sql)) {
+						$i++;
+					}
+				}
+				echo "$i produkter konverteret til ny varegruppe struktur";
+
+2007-01-16	+	Ny var i baseconfig:  $shop_ordersPerHistoryPage (CJS)
+2007-01-16	*	Nyt felt på USERS, som sørger for, at man kan flytte selv-registrerede brugere fra "landing group" til "rigtig gruppe" (CJS)
+				ALTER TABLE `USERS` ADD `TRANSFER_TO_GROUP` INT NOT NULL ;	
+2007-01-17	-	Shop: Omlagt så én vare kan tilhøre flere varegrupper (MAP)
+2007-01-19	*	Nyt felt på GROUPS til adresselister (CJS)
+				ALTER TABLE `GROUPS` ADD `USERLIST_OPEN` TINYINT NOT NULL ;
+2007-01-22	-	Newsletter subscribe: $_REQUEST[email] er nu default værdi i email feltet (MAP)
+2007-01-22	-	RELEASE: VERSION 2.6.4
+
+2007-01-22	-	Rettet fejl i newsletter/frontend/newsletter_index.php mht. TEMPLATETAG_ONLY i udtrækket (CJS)
+2007-01-22	-	Rettet fejl i picturearchive, link til rediger mappe (MAP)
+2007-01-22	-	Rettet fejl i picturearchive/frontend common, rewrite virker nu også + fikset fejl på frontend v/ingen original (MAP)
+2007-01-22	-	Tilføjet support for 1 stk. template af typen IMAGE til brug ved visning af billeder i galleriet (MAP).
+2007-01-23	-	Rettet fejl i picturearchive, rydder kun op for egen bruger (MAP)
+2007-01-23	-	Rettet fejl i picturearchive dropbox (return true manglede på funktion resize billede) (MAP)
+2007-01-23	-	Picturearchive dropbox: Tilføjet mulighed for automatisk at stille PUBLIC rettighed på mapper oprettet via dropbox (MAP)
+2007-01-24	-	Tilføjet support for SITES i rewrite-keywords tabellem. Pt. bliver kun url'er med et pageid omskrivet (MAP)
+2007-01-24	-	RELEASE: VERSION 2.6.5
+
+2007-01-25	-	Site_id på den side som hentes overrider nu session site (MAP)
+2007-01-31	-	Mode-plugins kan nu ligges i cms_plugins (MAP)
+2007-02-01	-	site_selector.php: Nu mulighed for at definere en default content_identifier på gruppeniveau. Begrænset funktionalitet implementeret: Hvis flere af brugerens grupper har en DEFAULT_CONTENT_IDENTIFIER defineret, vælges DEFAULT_CONTENT_IDENTIFIER på den gruppe med det laveste ID. Ellers vises "pages" (MAP).
+2007-02-01	*	ALTER TABLE  `GROUPS` ADD  `DEFAULT_CONTENT_IDENTIFIER` TEXT NOT NULL ;
+2007-02-01	*	Added database table to hold data access permissions (MAP)
+					CREATE TABLE  `DATA_PERMISSIONS` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `USER_ID` INT NOT NULL ,
+					 `GROUP_ID` INT NOT NULL ,
+					 `DATA_TABLE_NAME` TEXT NOT NULL ,
+					 `DATA_ID` INT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds permissions to access specific data.';
+					ALTER TABLE  `DATA_PERMISSIONS` ADD  `PERMISSION_NAME` TEXT NOT NULL ;
+					ALTER TABLE  `DATA_PERMISSIONS` CHANGE  `PERMISSION_NAME`  `PERMISSION_ID` INT NOT NULL
+2007-02-01	-	check_data_permission($data_table_name, $data_id, $group_id="", $user_id="") tilføjet til sharedfunctions.inc.php (MAP)
+2007-02-01	-	site_selector.php: Nu er det muligt at begrænse adgang til sites med DATAPERMISSIONS tabellen. (MAP)
+2007-02-01	*	To filter out datapermissions from GROUPS function, added IS_DATAPERMISSION field + ændret sql i common.inc: (MAP)
+					ALTER TABLE  `PERMISSIONS` ADD  `IS_DATAPERMISSION` TINYINT( 1 ) NOT NULL ;
+2007-02-07  -   Flyttet db_safedata + db_errorhandler fra frontend-common til sharedfunctions (MAP)
+2007-02-12	-	common.inc.php / commonscripts.js: Implementeret functionen datapermission_set + tilhørende js funktioner, der muliggør 
+				tildeling af rettigheder på dataniveau. (MAP)
+2007-02-13	-	Rettet fejl i visning af ikke-medlemmer under Groups (MAP)
+2007-02-13	-	Fjernet ID kolonne fra bruger/gruppelister (MAP)
+2007-02-13	-	RELEASE: VERSION 2.6.6
+
+2007-02-15	-	Picturearchive-common.inc: Fjernet default værdi fra funktionen select_folders der modtager &$html som variabel reference for kompatibilitet med php4 (MAP)
+2007-02-15	-	Tilføjet link til site-statistik fra CMS (MAP)
+2007-03-06	*	3 nye felter på USERS til hhv. skjulning fra lister, image_id og krypteret password: (CJS)
+					ALTER TABLE `USERS` ADD `NEVER_PUBLIC` TINYINT NOT NULL ,
+					ADD `IMAGE_ID` INT NOT NULL ,
+					ADD `PASSWORD_ENCRYPTED` TEXT NOT NULL ;
+2007-03-06	-	Tilføjet "Åben siden i et nyt vindue" under Sider -> Menu. Bruger det allerede eksisterende felt POPUP på PAGES tabellen (CJS)
+2007-03-06	-	Fjernet links på usergroups under Sider -> Rettigheder, så man ikke ved et uheld hopper ud af redigeringen (CJS)
+2007-03-06	-	Filarkiv: Rettet i CMS filarkiv, så der køres gennem download.php, når man klikker på fil-linket (derved får filen sit rigtige navn + MIME-type) (CJS)
+2007-03-08	-	Formular: Rettet, så man på frontend kan gennemtvinge et USER_ID, der skal sendes til (formGenerator() og parseSubmittedForm()) (CJS)
+2007-03-14	-	Rettet fejl i picturearchive_actions.php, linje 275, vedr. original_archived (CJS)
+2007-03-14	-	Rettet return_content_build_array, så den sender 404-header hvis der ikke er matchende indhold ved rewrite (MAP)
+2007-03-14	-	Rettet syntax-fejl i module shop/frontend/showproducts, fejl findes kun på dev (MAP)
+2007-03-14	-	Rettet fejl i module shop/frontend/showproducts, så URL_EXT_INFO vises korrekt (MAP)
+2007-03-14	-	Fn: metaTagGenerator tilføjet robots-tag med "noindex" for printervenlig og søgeresultater (MAP)
+
+2007-03-19	*	ShopGroupDiscounts: Udvidelde af tabel for kommende understøttelse af rabatter pr. varegruppe pr. brugergruppe (MAP)
+				ALTER TABLE  `SHOP_GROUPDISCOUNTS` ADD  `PRODUCTGROUP_ID` INT NOT NULL ;
+2007-03-19	-	Common.inc.php: Ny funktion usergroupSelector returnerer options til usergroup drop-down (MAP)
+2007-03-20	-	Pages - mindre rettelse i commonscripts.js + pages_index.php mht. gem og preview, der nu også bruger korrekt sprog (CJS)
+2007-03-20	-	Module: shopgroupdiscounts ændret, så den understøtter rabatter pr. varegruppe pr. brugergruppe. Ændringen er bagud-kompatibel i den forstand at evt. allerede indtastede rabatprocenter på brugergrupper også træder igennem i den nye struktur (som generel rabat) (MAP)
+2007-03-21	-	Shop: Regner nu priser på baggrund af rabat pr. varegruppe pr. brugergruppe for brugere som er logget ind (MAP)
+2007-03-21	-	Picturearchive: Rettet fejl, så billeder nu slettes korrekt. (MAP)
+2007-03-21	-	Picturearchive: Advarsel ved billeder som er brugt er udkoblet indtil bedre funktion implementeres. (MAP)
+2007-03-21	-	Picturearchive: Rettet fejl, så man ikke længere kan slette mapper med undermapper (eller billeder) (MAP)
+2007-03-21	*	Tilføjet POSITION på USERS_GROUPS (CJS)
+					ALTER TABLE `USERS_GROUPS` ADD `POSITION` INT NOT NULL ;
+2007-03-22	*	Tilføjet SORT_BY på GROUPS (CJS)
+					ALTER TABLE `GROUPS` ADD `SORT_BY` TEXT NOT NULL ;
+2007-03-22	-	Generel forbedring af brugersystem, så det bliver nemmere at overskue mange brugere og grupper. (CJS)
+2007-03-22	-	Picturearchive: Rettet fejl, så dropbox import kan køre korrekt uden at der er vagt en mappe først (MAP)
+2007-03-23	-	RELEASE: VERSION 2.6.7
+
+2007-03-29	-	Rettet i frontend_common -> returnOrderStamdata(), så der a) kommer firmanavn på adressen, og b) denne gentages i lev. adr. (CJS)
+2007-03-29	*	Ny tabel til forbedret domæne håndtering CMS_SITEDOMAINS (MAP):
+					CREATE TABLE  `CMS_SITEDOMAINS` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `SITE_ID` INT NOT NULL ,
+					 `SUBDOMAIN` TEXT NOT NULL ,
+					 `DOMAIN` TEXT NOT NULL ,
+					 `DEFAULT` TINYINT( 1 ) NOT NULL DEFAULT  '0',
+					 `REDIRECT` INT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Table holds all domains used for this CMS installation';
+
+2007-03-30	-	Rettet manglende language i cms/common.inc.php -> gemRow() under events (CJS)
+2007-04-02	*	Ny tabel til felter, der varierer på gruppebasis (CJS):
+					CREATE TABLE `USERS_VARIED_FIELDS` (
+					`ID` INT NOT NULL AUTO_INCREMENT ,
+					`USER_ID` INT NOT NULL ,
+					`GROUP_ID` INT NOT NULL ,
+					`FIELD_NAME` TEXT NOT NULL ,
+					`TABLE_NAME` TEXT NOT NULL ,
+					`FIELD_VALUE` TEXT NOT NULL ,
+					INDEX ( `ID` ) 
+					) ENGINE = MYISAM ;
+
+2007-04-02	+	Ny variabel i cms_baseconfig: 	$dbfields_vary = array("JOB_TITLE" => false) (CJS)
+2007-04-04	*	To nye felter på PICTUREARCHIVE_FOLDERS (CJS)
+					ALTER TABLE `PICTUREARCHIVE_FOLDERS` ADD `THREAD_ID` INT NOT NULL ,
+					ADD `LEVEL` INT NOT NULL ;
+2007-04-04	-	Rettet i picturearchive_common og picturearchive_submithandler jf. ovenstående (CJS)
+2007-04-10	-	Rettet i common.inc.php addGroupMember() og gemBruger(), så brugernes POSITION bliver korrekt, når man tilføjer nye brugere (CJS)
+2007-04-12	*	Nyt felt på REWRITE_KEYWORDS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Brug en sql i stil med denne: UPDATE REWRITE_KEYWORDS SET SITE_ID =Y WHERE SITE_ID =X AND TABLENAME NOT LIKE  'RESERVED%' (MAP):
+					ALTER TABLE  `REWRITE_KEYWORDS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+2007-04-13	*	Nyt felt på TEMPLATES til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: Templates med SITE_ID = 0 er delte/globale templates! (MAP):
+					ALTER TABLE  `TEMPLATES` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `TEMPLATES` SET  `SITE_ID` =1
+2007-04-13	*	Nyt felt på PICTUREARCHIVE_FOLDERS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: Folders med SITE_ID = 0 er delte/globale billedmapper! (MAP):
+					ALTER TABLE  `PICTUREARCHIVE_FOLDERS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `PICTUREARCHIVE_FOLDERS` SET  `SITE_ID` = '1';
+2007-04-17	*	Mappenavne i site-roden (cms, includes, cms_configimages, dropbox) er tilføjet som RESERVED i REWRITE_KEYWORDS tabellen. Dette for at undgå "ulovlige" keywords, som giver fejl da mappen eksisterer på systemet. (MAP)
+					INSERT INTO  `REWRITE_KEYWORDS` (  `ID` ,  `KEYWORD` ,  `TABLENAME` ,  `REQUEST_ID` ,  `SITE_ID` ) 
+						VALUES 
+							(NULL ,  'cms',  'RESERVED',  '0',  '0'), 
+							(NULL ,  'includes',  'RESERVED',  '0',  '0'),
+							(NULL ,  'cms_configimages',  'RESERVED',  '0',  '0'),
+							(NULL ,  'dropbox',  'RESERVED',  '0',  '0');
+2007-04-17	*	Nyt felt på FILEARCHIVE_FOLDERS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: Folders med SITE_ID = 0 er delte/globale filmapper! (MAP):
+					ALTER TABLE  `FILEARCHIVE_FOLDERS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';			
+					--> UPDATE  `FILEARCHIVE_FOLDERS` SET  `SITE_ID` =  '1'
+2007-04-17	+	Opdateret includes/download.php for site-separation (MAP)			
+2007-04-17	+	Opdateret includes/shownewsletter.php for site-separation (MAP)			
+2007-04-17	+	Opdateret includes/showmaillist.php for site-separation (MAP)			
+2007-04-17	-	Slettet funktioner db_safedata + db_errorhandler fra bookmaker common - de er flyttet til sharedfunctions (se 2007-02-07) og burde have været slettet i den forbindelse (MAP)
+2007-04-17	*	Nyt felt på SHOP_PRODUCTGROUPS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! (MAP):
+					ALTER TABLE  `SHOP_PRODUCTGROUPS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE `SHOP_PRODUCTGROUPS` SET  `SITE_ID` = '1'
+2007-04-17	*	Nyt felt på GROUPS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: Grupper med SITE_ID = 0 er delte/globale brugergrupper! (MAP):
+					ALTER TABLE  `GROUPS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `GROUPS` SET  `SITE_ID` = '1'
+2007-04-17	*	Nyt felt på NEWSLETTER_CATEGORYGROUPS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: Categorygroups med SITE_ID = 0 er delte/globale kategorier! (MAP):
+					ALTER TABLE  `NEWSLETTER_CATEGORYGROUPS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `NEWSLETTER_CATEGORYGROUPS` SET  `SITE_ID` =  '1'
+2007-04-17	*	Nyt felt på SHOP_PRODUCTS_QUALITIES til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! Bemærk: SITE_ID = 0 er delte/globale rækker! 
+					ALTER TABLE  `SHOP_PRODUCTS_QUALITIES` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `SHOP_PRODUCTS_QUALITIES` SET  `SITE_ID` =  '1'
+2007-04-17	*	Nyt felt på SHOP_ORDERS til brug for site-separation. Husk at opdatere eksisterende rækker ved opgradering! 
+					ALTER TABLE  `SHOP_ORDERS` ADD  `SITE_ID` INT NOT NULL DEFAULT  '0';
+					--> UPDATE  `SHOP_ORDERS` SET  `SITE_ID` =  '1'
+2007-04-17	-	FE: Rettet fejl hvor cart actions checkede for statisk rettighed (FE_SHOPCHECKOUT) i stedet for $shopPermissions config. Fejlen medførte, at man skulle være logget ind for at lægge noget i kurven - også selvom $shopPermissions[buy] var tom. (MAP)
+2007-04-18	-	CMS: News/Calender module: GLOBAL_STATUS -funktionalitet udkommenteret. Denne funktion benyttes ikke/sjældent og giver rettigheds-problemer ved multi-site implementeringer. (MAP)
+2007-04-18	-	CMS: Common.inc: Funktionen gemRow gemmer nu PAGES/NEWS/EVENTS med site_id fra deres menu/arkiv/kalender istedet for $_SESSION[SELECTED_SITE] (MAP)
+2007-04-18	-	CMS: News/Calender common inc udtræksfunktioner tillader nu delte arkiver/kalendre (site_id = 0) (MAP)
+2007-04-18	-	CMS: gemBilledMappe THUMBMODE sættes nu som default til NEWEST på nye billedarkiver og SITE_ID sættes som default til $_SESSION[SELECTED_SITE] (MAP)
+2007-04-18	-	CMS/FE: Billedarkiv viser nu kun site-specifikker (og globale, siteid=0) billedmapper. Dette træder igennem i modulet, i fck editor og i ajax komponenter og på frontend. (MAP)
+2007-04-18	-	CMS/FE: Nyhedsarkiv viser nu kun site-specifikker (og globale, siteid=0) arkiver/nyheder. Dette træder igennem i modulet, i fck editor og i ajax komponenter og på frontend. (MAP)
+2007-04-18	-	CMS/FE: Kalenderarkiv viser nu kun site-specifikker (og globale, siteid=0) kalendre/begivenheder. Dette træder igennem i modulet, i fck editor og i ajax komponenter og på frontend. (MAP)
+2007-04-18	-	CMS/FE: Menu+sidevælger viser nu kun site-specifikker (og globale, siteid=0) menuer/sider. Dette træder igennem i modulet, i fck editor og i ajax komponenter og på frontend. (MAP)
+2007-04-20	-	.htaccess med RewriteEngine off tilføjet til mapper cms, cms_utilities, includes tilføjet for at indgå fejlmelding (MAP)
+2007-04-20 	-	CMS: Brugere + grupper viser nu kun site-specifikker (og globale, siteid=0) menuer/sider. Dette træder igennem i modulet. (MAP)
+2007-04-20	-	CMS: common.ajaxresponders.php datarettigheder kan nu kun tildeles grupper/brugere der er medlem af grupper som tilhører det aktuelle eller globale site (MAP)
+2007-04-21	-	CMS/FE: Newsletter site separeret (MAP)
+2007-04-21	-	CMS/FE: Shop site separeret (MAP)
+2007-04-24	-	RELEASE: VERSION 2.6.8
+
+2007-04-24	-	groups_common.inc.php: Rettet fejl ved ingen rækker i GROUPS_FORMFIELDS (MAP)
+2007-04-25	-	frontend.common.inc.php: Rettet sql fejl i funktionen returnDistinctUserPermissionsFE, som aldrig returnerede rettigheder (MAP)
+2007-04-25	-	Shop/frontend/shop.common.inc: Rettet 2 kald til funktionen returnDiscountPercentage i funktionen showProducts. Der manglede et parameter ($arr_content) (MAP)
+2007-04-25	+	cms_config.inc.php: Rettet så config bliver switchet korrekt på baggrund af $_SESSION[SELECTED_SITE] i cms og $site_to_show på frontend (MAP)
+2007-04-25	-	news_submithandler.php: Rettet fejl hvor default nyhedsarkiv kunne komme fra andet site (MAP)
+2007-04-25	-	common.inc.php: Funktionen gruppeOversigtShortPages tilrettet så der kun vises grupper som er relevant for det aktuelle site (MAP)
+2007-04-25	-	picturearchive_index.php: Rettet fejl (usynligt mac karakter) i linie 295 (MAP)
+2007-04-26	-	frontend.common.inc: Omlagt funktion fileBox fra $cmsDomain global til $arr_content (MAP)
+2007-04-26	-	frontend.common.inc: Omlagt funktion modeHtmlHeaderIncludes fra $cmsDomain global til $arr_content (MAP)
+2007-04-26	-	picturearchive_common.inc.php: Rettet fejl i funktionen gemBilledMappe så undermapper ikke fik korrekt site-id (MAP)
+2007-05-01	-	frontend.common.inc: Rettet "til toppen"-funktionen så den også virker med rewrite (MAP)
+2007-05-07	+	Ny fil custom_functions.php i includes mappen, som bliver inkluderet i cms_config.inc.php. Filen bruges til custom funktioner pr. site. (CJS)
+2007-05-08	*	Ny tabel CUSTOMFIELDS - Holds custom field definitions: (MAP)
+					CREATE TABLE  `CUSTOMFIELDS` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `TEMPLATE_ID` INT NOT NULL ,
+					 `REQUEST_ID` INT NOT NULL ,
+					 `TABLENAME` TEXT NOT NULL ,
+					 `DESCRIPTION` TEXT NOT NULL ,
+					 `TYPE` TEXT NOT NULL ,
+					 `DELETED` INT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds custom field definitions';
+					ALTER TABLE  `CUSTOMFIELDS` CHANGE  `TYPE`  `TYPE_ID` INT NOT NULL
+					ALTER TABLE  `CUSTOMFIELDS` ADD  `POSITION` INT NOT NULL AFTER  `TYPE_ID` ;
+					ALTER TABLE  `CUSTOMFIELDS` DROP  `REQUEST_ID`
+2007-05-08	*	Ny tabel CUSTOMFIELDTYPES - Holds custom field types: (MAP)
+					CREATE TABLE  `CUSTOMFIELDTYPES` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `TYPENAME` TEXT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds custom field types';
+2007-05-08	*	Ny tabel CUSTOMFIELDATTRIBUTES - Holds attributes for custom field types: (MAP)
+					CREATE TABLE  `CUSTOMFIELDATTRIBUTES` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `CUSTOMFIELDTYPE_ID` INT NOT NULL ,
+					 `ATTRIBUTENAME` TEXT NOT NULL ,
+					 `ATTRIBUTETYPE` TEXT NOT NULL COMMENT  'Valid attributetypes are INT/TEXT/TEXTAREA/TEXTEDITOR/DROPDOWN/RADIOGROUP/IMAGESELECTOR',
+					 `OPTIONS` TEXT NOT NULL COMMENT  'option1___value1|||option2___value2 etc... (Only valid for types DROPDOWN and RADIOGROUP)',
+					 `DEFAULTVALUE` TEXT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds attributes for custom field types';
+					ALTER TABLE  `CUSTOMFIELDATTRIBUTES` ADD  `POSITION` INT NOT NULL ;
+					ALTER TABLE  `CUSTOMFIELDATTRIBUTES` ADD  `ATTRIBUTEKEY` TEXT NOT NULL COMMENT  'Key used as a unique attribute identifyer in combination with CUSTOMFIELD_ID' AFTER  `ATTRIBUTENAME` ;
+					ALTER TABLE  `CUSTOMFIELDATTRIBUTES` ADD  `PREFERENCES` TEXT NOT NULL ;
+2007-05-08	*	Ny tabel CUSTOMFIELDDATA - Holds data for custom fields: (MAP)
+					CREATE TABLE  `CUSTOMFIELDDATA` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `CUSTOMFIELD_ID` INT NOT NULL ,
+					 `ATTRIBUTE_ID` INT NOT NULL ,
+					 `VALUE` TEXT NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds data for custom fields';
+					ALTER TABLE  `CUSTOMFIELDDATA` ADD  `REQUEST_ID` INT NOT NULL AFTER  `ATTRIBUTE_ID` ;
+					
+2007-05-08	-	Rettet fejl i gemBruger i common.inc.php, således at eksisterende brugere ikke får nulstillet deres POSITION i USERS_GROUPS, når man gemmer dem igen (CJS)
+2007-05-09	-	Rettet fejl i return_rewrite_keyword i sharedfunctions, så den 1) kan håndtere mange sider med samme key (key-1, key-2, key-3 ...) og 2) erstatter " - " med " ", før key'en genereres (CJS)
+2007-05-09	-	Rettet fejl: nl2br i funktionen showproducts (CJS)
+2007-05-09	-	Diverse ændringer i pages, common.inc.php, commonscripts.js, picturearchive.common, picturearchive.ajaxresponders for understøttelse af custom fields. (MAP)
+2007-05-10	-	Customfields implementeret i PAGES (MAP)
+2007-05-10	-	RELEASE: VERSION 2.6.9
+
+2007-05-11	*	Nyt felt på CUSTOMFIELDS for nemmere udtræk (MAP)
+				ALTER TABLE  `CUSTOMFIELDS` ADD  `FIELDKEY` TEXT NOT NULL AFTER  `DESCRIPTION` ;
+2007-05-11	-	frontend.common: return_customfielddata er ny funktion (MAP)
+2007-05-11	-	common.inc.php: hasCustomfields($str_tablename, $int_templateid)er ny funktion - sikrer at "specialfelter" tab kun vises hvor relevant (MAP)
+2007-05-14	-	rydOp flyttet til site-selector.php så tabeller kun ryddes op ved login (MAP)
+2007-05-14	-	Rettet Safari-specifik fejl, så tabs virker igen efter introduktion af FCK-editors på flere tabs og dertilhørende aktiveringsscript (MAP)
+2007-05-14	-	site-selector.php tilføjet id='content' på body tag for at undgå JS fejl (MAP)
+2007-05-15	*	Nyt felt på SHOP_ORDERS til DELIVERYCOMPANY - firma på lev.addr. (CJS)
+				ALTER TABLE `SHOP_ORDERS` ADD `DELIVERYCOMPANY` TEXT NOT NULL ;
+2007-05-15	*	Nyt felt på CART_ORDERS til DELIVERYCOMPANY: (CJS)
+				ALTER TABLE `CART_ORDERS` ADD `DELIVERYCOMPANY` TEXT NOT NULL ;
+2007-05-15	-	Jf. ovenstående: Rettelser i frontend_common + shoporderhistory_common (CJS)
+2007-05-21	-	RELEASE: VERSION 2.6.10
+
+2007-05-22	-	Tilføjet en række tabeller til brug i kommende blog-modul (sql følger senere) (MAP)
+2007-05-22	*	Oprettet nye permissions til blog-modulet (MAP):
+					INSERT INTO  `PERMISSIONS` (  `ID` ,  `NAME` ,  `DESCRIPTION` ,  `PERMISSIONGROUPS_ID` ,  `IS_DATAPERMISSION` ) 
+					VALUES (
+					NULL ,  'CMS_BLOGS',  'Brugeren må oprette / redigere / slette indlæg på relevante blogs.',  '1',  '0'
+					), (
+					NULL ,  'CMS_BLOGMANAGER',  'Brugeren må oprette nye blogs og redigere / slette eksisterende blogs.',  '1',  '0'
+					);
+					INSERT INTO  `PERMISSIONS` (  `ID` ,  `NAME` ,  `DESCRIPTION` ,  `PERMISSIONGROUPS_ID` ,  `IS_DATAPERMISSION` ) 
+					VALUES (
+					NULL ,  'DATA_FE_BLOG_READ',  'Brugere har adgang til at læse bloggen',  '2',  '1'
+					), (
+					NULL ,  'DATA_FE_BLOG_COMMENT',  'Brugere har adgang til at kommentere på bloggen',  '2',  '1'
+					);
+					INSERT INTO  `PERMISSIONS` (  `ID` ,  `NAME` ,  `DESCRIPTION` ,  `PERMISSIONGROUPS_ID` ,  `IS_DATAPERMISSION` ) 
+					VALUES (
+					NULL ,  'DATA_CMS_BLOG_PUBLISH',  'Brugere må skrive indlæg på bloggen',  '1',  '1'
+					);
+2007-05-25	*	Nye felter på NEWSFEEDS til brug for syndikering/feeds (MAP):
+					ALTER TABLE  `NEWSFEEDS` ADD  `SYNDICATION_ALLOWED` TINYINT( 1 ) NOT NULL AFTER  `DEFAULT_LANGUAGE` ,
+					ADD  `SYNDICATION_KEY` TEXT NOT NULL AFTER  `SYNDICATION_ALLOWED` ;
+					ALTER TABLE  `NEWSFEEDS` ADD  `SYNDICATION_SHOWCOMPLETEPOST` TINYINT( 1 ) NOT NULL DEFAULT  '1' AFTER  `DEFAULT_LANGUAGE` ;
+					ALTER TABLE  `NEWSFEEDS` ADD  `SYNDICATION_SNIPPETLENGTH` INT NOT NULL DEFAULT  '5' COMMENT  'Length of snippet, number of sentences' AFTER  `SYNDICATION_SHOWCOMPLETEPOST` ;
+2007-05-29	*	Indført rettighed Picturearchive Manager der kan stille rettigheder på billedarkiver + 2 stk. datarettigheder (MAP)
+					INSERT INTO `PERMISSIONS` VALUES (38, 'CMS_PICTUREARCHIVEMANAGER', 'CMS: Sætte rettigheder på billedmapper', 5, 0);
+					INSERT INTO  `PERMISSIONS` (  `ID` ,  `NAME` ,  `DESCRIPTION` ,  `PERMISSIONGROUPS_ID` ,  `IS_DATAPERMISSION` ) 
+						VALUES (
+						NULL ,  'DATA_PICTUREARCHIVE_USEINCMS',  'Brugeren må benytte billeder fra mappen til indholdsredigering',  '5',  '1'
+						), (
+						NULL ,  'DATA_PICTUREARCHIVE_MANAGEFOLDER',  'Brugeren må tilføje / redigere / slette billeder i mappen',  '5',  '1'
+						);
+2007-05-29	*	Oprettet permission groups for bedre overskuelighed i grupperedigering (MAP)
+2007-05-29	+	Ny mappe /feeds/ i www roden. Til RSS-XML feeds (pt. nyheder+blogs) (MAP)
+2007-05-29	-	Rettigheder på picturearchive: Man skal være manager for at tildele datarettigheder, flytte mapper, bruge dropbox og oprette nye mapper på hovedniveau. (MAP)
+2007-06-07	+	Nye variabler i cms_baseconfig: (CJS)
+				$blogs_overview_post_count - som styrer antal viste posts på total-overwiew siden 
+				$blogs_lastcommentedbox_count - som styrer antal links i sidst kommenterede boks
+				$blogs_show_tags_used_once - som styrer, om tags anvendt kun een gang skal vises (ja/nej)
+2007-06-07	-	Frontend_common rettet til ift. blogs-modul: metaTagGenerator(), frontendMenuPath(), buildPageMainContent(), load_template(), returnPageTitleTag() (CJS)
+2007-06-07	*	Indført rettighed CMS_TAGMANAGER der kan slette sammenlægge tags (MAP):
+					INSERT INTO  `PERMISSIONS` (  `ID` ,  `NAME` ,  `DESCRIPTION` ,  `PERMISSIONGROUPS_ID` ,  `IS_DATAPERMISSION` ) 
+					VALUES (
+					NULL ,  'CMS_TAGMANAGER',  'CMS: Adgang til at slette / sammenlægge tags',  '1',  '0'
+					);
+2007-06-07	-	Nye moduler: Blogs/Blog Manager/Tags
+2007-06-08	*	Blog-rewrite, tilføj relevante rækker i REWRITE_MODES(ej i sql herunder) + REWRITE_KEYWORDS (MAP)
+					INSERT INTO  `REWRITE_KEYWORDS` (  `ID` ,  `KEYWORD` ,  `TABLENAME` ,  `REQUEST_ID` ,  `SITE_ID` ) 
+					VALUES (
+					NULL ,  'blogs',  'RESERVED',  '0',  '0'
+					), (
+					NULL ,  'blog',  'RESERVED',  '0',  '0'
+					);
+2007-06-12	-	Tilføjet $css_id som default-tom sidste parameter i newBuildFrontendMenu (CJS)
+2007-06-12	-	Tilføjet ordrenr. i selve mail content i completeOrder() + tilhørende tekster i sprogfiler (CJS)
+2007-06-18	*	Implementeret rewrite på tags i blog modulet: (MAP)
+				INSERT INTO `REWRITE_METHODS` VALUES ('', 'tag', 'tag', 0);
+2007-06-18	-	Implementeret søgning i blogs + rewrite på alle typer søgeresultater (MAP)
+2007-06-18	*	Færdiggjort blog-modul: SQL for relevante tabeller her:
+					CREATE TABLE `BLOGPOSTS` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `BLOG_ID` int(11) NOT NULL default '0',
+					  `PUBLISHED` tinyint(1) NOT NULL default '0',
+					  `HEADING` text NOT NULL,
+					  `CONTENT` text NOT NULL,
+					  `CONTENTSNIPPET` text NOT NULL,
+					  `COMMENTS_ALLOWED` tinyint(1) NOT NULL default '0',
+					  `AUTHOR_ID` int(11) NOT NULL default '0',
+					  `CREATED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `CHANGED_BY` int(11) NOT NULL default '0',
+					  `CHANGED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `PUBLISHED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `UNFINISHED` tinyint(1) NOT NULL default '0',
+					  `DELETED` tinyint(1) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+					
+					CREATE TABLE `BLOGS` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `SITE_ID` int(11) NOT NULL default '0',
+					  `TEMPLATE_ID` int(11) NOT NULL default '0',
+					  `PUBLISHED` tinyint(1) NOT NULL default '0',
+					  `TITLE` text NOT NULL,
+					  `SUBTITLE` text NOT NULL,
+					  `DESCRIPTION` text NOT NULL,
+					  `COMMENTS_ALLOWED` tinyint(1) NOT NULL default '0',
+					  `COMMENTS_STRIPTAGS` text NOT NULL COMMENT 'Strip these tags from comments eg. <p><a>',
+					  `COMMENTS_EMAIL` tinyint(1) NOT NULL default '0',
+					  `APPROVECOMMENTS` tinyint(1) NOT NULL default '0',
+					  `SPAMPREVENT_AKISMETKEY` text NOT NULL,
+					  `SPAMPREVENT_CAPTCHA` tinyint(1) NOT NULL default '0',
+					  `SYNDICATION_ALLOWED` tinyint(1) NOT NULL default '0',
+					  `SYNDICATION_SHOWCOMPLETEPOST` tinyint(4) NOT NULL default '0',
+					  `SYNDICATION_SNIPPETLENGTH` int(11) NOT NULL default '0' COMMENT 'Length in number of sentences',
+					  `SYNDICATION_KEY` text NOT NULL,
+					  `CREATED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `CHANGED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `AUTHOR_ID` int(11) NOT NULL default '0',
+					  `UNFINISHED` tinyint(1) NOT NULL default '0',
+					  `LANGUAGE_ID` int(11) NOT NULL default '0',
+					  `SHOW_PROFILEIMAGE` tinyint(1) NOT NULL default '0',
+					  `SHOW_COMPLETEPOST` tinyint(1) NOT NULL default '0',
+					  `DELETED` tinyint(1) NOT NULL default '0',
+					  `ITEMS_DISPLAYCOUNT` int(11) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+					
+					CREATE TABLE `COMMENTS` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `TABLENAME` text NOT NULL,
+					  `REQUEST_ID` int(11) NOT NULL default '0',
+					  `COMMENT` text NOT NULL,
+					  `COMMENTER_ID` int(11) NOT NULL default '0',
+					  `COMMENTER_NAME` text NOT NULL,
+					  `COMMENTER_EMAIL` text NOT NULL,
+					  `COMMENTER_URL` text NOT NULL,
+					  `APPROVED` tinyint(1) NOT NULL default '0',
+					  `IS_SPAM` tinyint(1) NOT NULL default '0',
+					  `CREATED_DATE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `DELETED` tinyint(1) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+					
+					CREATE TABLE `EMAIL_WHITELIST` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `EMAIL` text NOT NULL,
+					  `TABLENAME` text NOT NULL,
+					  `REQUEST_ID` int(11) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+					
+					CREATE TABLE `TAGS` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `SITE_ID` int(11) NOT NULL default '0',
+					  `TAGNAME` text NOT NULL,
+					  `DELETED` tinyint(4) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+					
+					CREATE TABLE `TAG_REFERENCES` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `TAG_ID` int(11) NOT NULL default '0',
+					  `TABLENAME` text NOT NULL,
+					  `REQUEST_ID` int(11) NOT NULL default '0',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+2007-06-19	*	RSS-feeds på nyhedsarkiver, "feeds" tilføjet som reserveret rewrite key (MAP)
+					INSERT INTO `REWRITE_KEYWORDS` VALUES ('', 'feeds', 'RESERVED', 0, 0);
+2007-06-19	-	Diverse ændringer i rewrite funktioner, så eventuelle site rewrite keys tages med. 
+				Også rettet så nyhedsarkiver ikke længere får tilføjet /offset__0/ som default (MAP)
+2007-06-19	-	RELEASE: VERSION 2.6.11
+
+2007-06-20	*	Slettet plug-in MAILLIST og relaterede tabeller på databasen er droppet (MAP):
+					DROP TABLE  `MAILLISTLETTERS` ,
+					`MAILLIST_CATEGORIES` ,
+					`MAILLIST_CATEGORIES_OPTOUT` ,
+					`MAILLIST_CATEGORYGROUPS` ,
+					`MAILLIST_FORMFIELDS` ,
+					`MAILLIST_HISTORY` ,
+					`MAILLIST_HISTORY_MAILLOG` ,
+					`MAILLIST_ITEMS` ,
+					`MAILLIST_MAILLIST_CATEGORIES` ,
+					`MAILLIST_SUBSCRIPTIONS` ,
+					`MAILLIST_TEMPLATES` ,
+					`MAILLIST_TEMPLATES_CATEGORYGROUPS` ,
+					`MAILLIST_TEMPLATES_FORMFIELDS` ,
+					`MAILLIST_TEMPLATES_USERGROUPS` ;
+2007-06-21	-	Nyhedsbrev: Rettet fejl hvor nye newsitems forsvandt efter redigering af et andet item. (CJS)
+2007-06-29	-	Rettet i funk. returnNewsarchiveUrl i newsletter_common, så SITE_PATH ikke tages med. (CJS)
+2007-07-04	*	Nyt felt INLINE på PAGES_FORMS til inline visning af form (CJS)
+					ALTER TABLE `PAGES_FORMS` ADD `INLINE` TINYINT NOT NULL ;
+2007-07-04	-	Jf. ovenstående: Tilhørende rettelser i formeditor2_common, foreditor2_ajaxresponders og pages_script.js (CJS)
+2007-07-04	-	Jf. ovenstående: Tilhørende rettelser i frontend_common formGenerator(), formularBox(), buildPageMainContent() (CJS)
+2007-07-04	-	Tilføjet newusermail-tekster i baselanguage, rettet sendNewUserMail() i cms/common_inc og modules/groups/frontend/groups_actions (CJS)
+2007-07-09	+	includes/download.php - rettet fejl med download af filer fra cms (multisite) (MAP)
+2007-07-12	*	Nyt felt på NEWSLETTER_TEMPLATES til email, som skal have besked, når ny person tilmelder sig: (CJS)
+				ALTER TABLE `NEWSLETTER_TEMPLATES` ADD `NEWSUBSCRIBER_NOTIFY_EMAIL` TEXT NOT NULL ;
+2007-07-13	-	Tilføjet import-funktion (newsletter_importer.php) til nyhedsbrev-modul. Rettet "cfield_" til "cfield___" i frontend_common samt diverse filer tilhørende nyhedsbrev-modul. Tilføjet er par "quiet" attributter til newsletter funktioner. (CJS)
+2007-07-17	-	Frontend.common:fn getdefaultsite: Rettet fejl med manglende reindekseringh af array som betød at der i visse tilfælde ikke blev returneret et siteid (MAP)
+2007-07-17	-	Frontend.common:fn buildPageMainContent: Viser nu fejlside ved "404" i arr_content[http_status]. Som noget nyt sættes dette nu korrekt (i content build array) hvis $arr_content[mode] er sat men tom. (MAP)
+2007-08-03	-	Rettet fejl introduceret med rettelse i version 2.6.10 (se linie cms_history.txt:1260) - fejlen slettede nogle indhold af fck-felter når der blev skiftet faneblad. Fejlen opstod kun i IE. (MAP)
+2007-08-21	-	Frontend.common:fn return_content_build_array: Rettet fejl i "Gem og Preview"-funktionen introduceret med introduktion af lang parameter på preview funktionen. Fejlen betød at det blev opfattet som et sprogskifte og dermed blev forsiden hentet. (MAP)
+2007-08-22	*	Ny tabel (MAP):
+					CREATE TABLE  `NEWSLETTER_STATS` (
+					 `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `NEWSLETTER_ID` INT NOT NULL ,
+					 `USER_ID` INT NOT NULL ,
+					 `ACTION` TEXT NOT NULL ,
+					 `TABLENAME` TEXT NOT NULL ,
+					 `REQUEST_ID` INT NOT NULL ,
+					 `CLICKED_URL` TEXT NOT NULL ,
+					 `CREATED_DATE` DATETIME NOT NULL DEFAULT  'NOW()'
+					) ENGINE = MYISAM COMMENT =  'Holds stats for newsletter opened/clicked items';
+					ALTER TABLE  `NEWSLETTER_STATS` ADD  `TIMES_REPEATED` INT NOT NULL AFTER  `CLICKED_URL` ;
+					ALTER TABLE  `NEWSLETTER_STATS` ADD  `CHANGED_DATE` DATETIME NOT NULL ;
+					ALTER TABLE  `NEWSLETTER_STATS` CHANGE  `ACTION`  `USER_ACTION` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+2007-08-22	-	newsletter_common.inc: ny fn newsletter_stats_register (MAP)
+2007-08-22	+	Ny fil: /includes/images/newsletter_open.php (MAP)
+2007-08-22	+	Ny fil: /includes/images/newsletter_open.gif (MAP)
+2007-08-22	-	Tilføjet open/click tracking for nyhedsbrev (MAP)
+2007-08-22	-	Rettet fejl i approveproof (validate arr_content) (MAP)
+2007-08-23	-	RELEASE: VERSION 2.6.12
+
+2007-08-24	-	Feed-titles prefixes nu med sitename (MAP)
+2007-08-24	-	fn:return_feed_url($tablename, $requestid) + fn:return_feed_filename($tablename, $requestid) + fn:return_feed_savepath() flyttet fra common.inc.php til sharedfunctions.inc.php (MAP)
+2007-08-28	+	inline galleri opdateret, ny mappe: /includes/uploaded_pictures/gallerycache (CJS)
+2007-08-31	-	Opdateret shop/cart ting i frontend_common. Berørte funktioner: SendCart, ReturnOrderStamdata, SendCartPage (CJS)
+2007-08-31	-	Opdateret modules/cart/frontend/cart_actions.php (filer, der inkluderes + return_site_to_show) (CJS)
+2007-08-31	-	Tilføjet genberegning af fragt nederst i ShowCart() i frontend_common (CJS)
+2007-09-04	-	Rettet i FCK custom link + fileselector() i common.inc, således at filer køres gennem download.php på vej ud (CJS)
+2007-09-05	-	Rettet i frontend_common mustBeLoggedIn() og perform_actions() vedr. login, således at man nu får loginformen op med det samme, hvis man forespørger på en beskyttet side (og ikke som før en side, hvor der står "der er opstået en fejl, klik her for at logge ind") (CJS)
+2007-09-05	-	Rettet i picturearchive så billeder med unfinished = 1 ikke vises i oversigt (MAP)
+2007-09-07	-	frontend.common, fn formGenerator: Rettet, så det er muligt at sætte default checkedstate for nyhedsbref-tilmelding i config med variabel $newsletter_subscribe_formintegration_checkedstate + trækker nu caption fra databasen, hvis tilstede. Ellers: "Ja tak" (MAP)
+2007-09-27	-	Rettet småting vedr. nyhedsbrev, som fejlede ved brugere uden email adresse. Brugere uden e-mail adresse, får nu aldrig sat email_verified i databasen. Desuden rettet en lille ting i /includes/shownewsletter.php så det korrekte site bliver valgt (CJS/MAP)
+2007-10-01	*	Tilføjet SHOP som rewrite mode (én entry for hvert sprog) (MAP):
+					INSERT INTO  `REWRITE_MODES` (
+						`ID` ,
+						`NAME` ,
+						`INTERNALNAME` ,
+						`LANGUAGE_ID`
+						)
+						VALUES (
+						NULL ,  'shop',  'shop',  '1'
+						), (
+						NULL ,  'shop',  'shop',  '2'
+						);
+2007-10-02	-	Module:Shop: Tilføjet rewrite = ændringer i frontend common + just. af frontend i modul mappen (MAP)
+2007-10-02	+	Rewrite af page url'er udbygget med mulighed for at vise side-hierarki, ny variabel i baseconfig:
+				$useModRewrite_preserve_page_hierarchy  (default: false)
+2007-10-05	-	Rettet fejl, så liste med varegrupper nu vises ved mode=shop. Desuden rettet site-separation, så kun varegrupper fra aktuelle site eller delte grupper (0) vises (MAP)
+2007-10-05	*	Nyt felt til "Vis relaterede varer" (MAP):
+					ALTER TABLE  `SHOP_PRODUCTS` ADD  `SHOW_RELATED_PRODUCTS` TINYINT( 1 ) NOT NULL DEFAULT  '1' COMMENT 'Show related products when displaying this item in the shop';
+2007-10-05	*	Ny tabel til "relaterede varer" - Enten GROUP_ID eller ITEM_ID (ikke begge) skal udfyldes sammen med RELATED_ITEM_ID (MAP):
+					CREATE TABLE  `SHOP_RELATED_PRODUCTS` (
+					 `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `GROUP_ID` INT UNSIGNED NOT NULL ,
+					 `ITEM_ID` INT UNSIGNED NOT NULL ,
+					 `RELATED_ITEM_ID` INT UNSIGNED NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds information on related products';					
+					
+2007-10-05	*	Ny tabel til brugerspecifikke priser (MAP):
+					CREATE TABLE  `SHOP_USERPRICES` (
+					 `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					 `USER_ID` INT UNSIGNED NOT NULL ,
+					 `PRODUCT_ID` INT UNSIGNED NOT NULL ,
+					 `USERPRICE` FLOAT NOT NULL DEFAULT 'If defined, USERPRICE always takes precedence over any other shop prices and/or discounts',
+					 `CHANGED_DATE` DATETIME NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds specific user prices';
+2007-10-05	*	Nyt felt til at afgøre hvor man skal gå til, når man logger ind (CJS):
+					ALTER TABLE  `GROUPS` ADD  `LOGIN_TO_URL` TEXT NOT NULL ;
+2007-10-05	*	login oprettet som rewrite mode og RESERVED rewrite key i databasen (MAP)
+2007-10-08	*	redirect oprettet som rewrite method for at muliggøre login til specifik side pr. brugergruppe (se 2007-10-05) (MAP)
+2007-10-08	*	frontend.common:fn:makeorderpermanent udbygget med ekstra felter, order history funktionen er tilpasset (MAP)
+					ALTER TABLE  `SHOP_ORDERDETAILS` ADD  `FROZEN_CUSTOMDESCRIPTION` TEXT NOT NULL ;
+					ALTER TABLE  `SHOP_ORDERDETAILS` ADD  `FROZEN_USERPRICE` FLOAT NOT NULL ,
+					ADD  `FROZEN_CUSTOMPRICE` FLOAT NOT NULL ;
+				Hov, priserne skal være NULL som standard:
+					ALTER TABLE  `SHOP_ORDERDETAILS` CHANGE  `FROZEN_USERPRICE`  `FROZEN_USERPRICE` FLOAT NULL DEFAULT NULL ,
+					CHANGE  `FROZEN_CUSTOMPRICE`  `FROZEN_CUSTOMPRICE` FLOAT NULL DEFAULT NULL
+2007-10-09	*	USERPRICE er nu en decimal(9,2) i stedet for en float:
+					ALTER TABLE `SHOP_USERPRICES` CHANGE `USERPRICE` `USERPRICE` DECIMAL( 9, 2 ) NOT NULL DEFAULT '0.00' 
+2007-10-05	(*)	PLUGIN: Ny tabel til at sammenkæde brugere og varer (MAP):
+					CREATE TABLE  `SHOP_PRODUCTS_USERS` (
+					 `ID` INT NOT NULL ,
+					 `USER_ID` INT NOT NULL ,
+					 `PRODUCT_ID` INT NOT NULL ,
+					 `CONTEXT` ENUM(  'defined',  'bought',  'viewed' ) NOT NULL ,
+					 `CREATED_DATE` DATETIME NOT NULL
+					) ENGINE = MYISAM COMMENT =  'Holds association of SHOP_PRODUCTS and USERS for use in different contexts';
+2007-10-15	(*)	PLUGIN: SHOP_PRODUCTS_USERS - tilføjet glemt auto-increment (MAP):
+					ALTER TABLE  `SHOP_PRODUCTS_USERS` ADD PRIMARY KEY (  `ID` )
+					ALTER TABLE  `SHOP_PRODUCTS_USERS` CHANGE  `ID`  `ID` INT( 11 ) NOT NULL AUTO_INCREMENT
+2007-10-15	-	RELEASE: VERSION 2.6.13
+
+2007-10-16	-	Ny baseconfig-variabel:	$fallback_login_gotourl // If not defined on GROUPS table, use this as fallback. If this is not defined, user will be sent to frontpage (MAP)
+2007-10-22	-	Mindre rettelse i loginPage() - tilføjet oversatte tekster, også i baselanguage (CJS)
+2007-10-24	-	shop/frontend/common: Rettet antal varer i produktgrupper så slettede varer ikke tælles med (MAP)
+2007-10-24	-	shop/products: Rettet så man ikke kan vælge slettede varer som relaterede (MAP)
+2007-10-29	-	frontend.commmon:fn:groupRelatedProducts: Fejl rettet, så varer i ikke-publicerede grupper frasorteres (MAP)
+2007-10-30	-	frontend_common: newBuildFrontendMenu() ny variabel $maxLevels=false - kan bruges til kun at rendere menuen fra $parentId og $maxLevels ned - sæt $maxlevels=0 hvis der kun skal vises et niveau (CJS)
+2007-11-02	-	Rettet i calendarBox(), så den også checker på ENDDATE i "where" delen (CJS)
+2007-11-02	-	Nye baseconfig variabler:
+					$shopProductsBuySetQuantity = false; (er det muligt at sætte antal, inden produkter lægges i kurv?)
+					$shopProductsOrderBy = "PRODUCT_NUMBER asc"; (sortering af produkter i varegrupper)
+2007-11-05	*	Nyt felt på NEWS/NEWSFEEDS så nyheder kan tilknyttes et billede:
+				ALTER TABLE  `NEWSFEEDS` ADD  `SHOW_IMAGES` TINYINT( 1 ) DEFAULT  '0' NOT NULL ;
+				ALTER TABLE  `NEWS` ADD  `IMAGE_ID` INT NOT NULL ;
+2007-11-05	-	RELEASE: VERSION 2.6.14
+
+2007-11-14	-	Mindre rettelser i frontend.common shop+cart-funktioner (MAP)
+2007-11-14	-	Rettet fejl i USERS hvor COMPANY ikke blev gemt korrekt (MAP)
+2007-11-14	-	Sprogversioneret login fejl-meddelelse (CJS)
+2007-11-14	+	Alle filer konverteret til UTF-8 (MAP)
+2007-11-14	-	Alle cms filer + funktioner gennemgået og tilrettet til UTF-8 (MAP)
+2007-11-14	*	Database konverteret til UTF-8 (MAP)
+2007-11-15	-	RELEASE: VERSION 2.7
+
+**********	*	BEMÆRK: Ved opgradering til version 2.7 og senere fra tidligere versioner SKAL database konverteres til UTF-8. 
+				Anbefalet fremgangsmåde:
+				1. Lav komplet dump af eksisterende database til fil via phpMyAdmin
+				2. Åbn filen i teksteditor
+				3. Check at filen er i UTF-8 (bør være default ved eksport)
+				4. Kør følgende søg+erstat på filen
+					DEFAULT CHARSET=latin1 		-> 	DEFAULT CHARSET=utf8
+					COLLATE=latin1_danish_ci	->	COLLATE=utf8_unicode_ci
+					character set latin1		->	character set utf8
+					collate latin1_danish_ci	->	collate utf8_unicode_ci
+					charset=iso-8859-1			->	charset=UTF-8
+				5. Gem filen og importer den i en nyoprettet database
+				6. Konverter alle php filer som ikke automatisk opgraderes til UTF-8:
+					Alle filer i roden
+					Alle filer i /includes/ og undermapper
+				7. Skift site til ny database i config.inc.php
+
+2007-11-16	-	frontend.common: smårettelse i ordremail funktioner så alt vises i Verdana (MAP)
+2007-11-23	-	frontend.common: returnMappedFields(nederst) vedr. problem med nyhedsbrevtilmelding på formularer hvor tilmeld-bekræft er slået fra (CJS)
+2007-11-23	-	frontend.common: return_content_build_array: unset($arr_content[http_status]) ved sprogskifte for at undgå en fejlagtig "page not found" (MAP)
+2007-11-23	*	Nyt felt på CMS_SITEDOMAINS til brug for sproghåndtering af flere domæner på samme site (MAP): 
+					ALTER TABLE  `CMS_SITEDOMAINS` ADD  `PREFERRED_FOR_LANGUAGE` INT NULL DEFAULT NULL COMMENT 'Set to language_id if domain is preferred for site/language combination. Only set each language once per site.';
+2007-11-25	*	Nyt felt på CMS_SITEDOMAINS til brug for default site language (MAP):
+					ALTER TABLE  `CMS_SITEDOMAINS` ADD  `LANGUAGE` INT NOT NULL DEFAULT  '0' COMMENT 'Refers to ID on the LANGUAGES table. Set this language as default for this domain';
+2007-11-25	-	Forbedret håndtering af sprog/domæner - kan nu skifte til korrekt sprog på det aktuelle domæne (jf. LANGUAGE feltet på CMS_SITEDOMAINS) og skifte til et andet domæne på samme site, hvis det er foretrukket (CMS_SITEDOMAINS.PREFERRED_FOR_LANGUAGE) for indholdssproget.
+2007-11-29  -   Tilføjet 3 parametre til printerfriendly() (frontend_common), så man kan til- eller fravælge hhv. "til toppen", "print", "tip en ven" (CJS)
+2007-11-29  -   Rettet i CMS-modul custom boxes, så man nu kan editere boks-indhold med FCKeditor i stedet for textarea (ændret i filer _index.php og _script.js) (CJS)
+2007-11-29  *   Nyt felt COUNTRY på USERS-tabellen (CJS)
+                ALTER TABLE `USERS` ADD `COUNTRY` TEXT NOT NULL ;
+2007-11-29  -   Rettet i CMS-modul Brugere, således at COUNTRY gemmes på db (jf. ovenstående) (CJS)
+2007-12-05	-	RELEASE: VERSION 2.7.1
+
+2007-12-06	-	Menufunktion i frontend common: ny parameter til at rendere kun én thread (CJS)
+2007-12-06	-	Picturearchive: fn: new_file_view sorterer nu efter POSITION asc, ORG_FILENAME asc (MAP)
+2007-12-06	-	sharedFunctions->return_rewrite_key: Tilføjet oversættelse af slovakiske tegn: á, č, ť, ľ, ý, í, ú og ž (MAP)
+2007-12-10	-	fn:Return_content_build_array: $arr_content[baseurl] kommer nu fra $_SERVER["HTTP_HOST"] (MAP)
+2007-12-10	-	fn:render_page_content: Interne links omskrives til den aktuelle baseurl, så flere sprog på forskellige domæenr på samme site er muligt (MAP)
+2007-12-10	+	common.js->fn:search: Fejlmeddelelse sprogversioneret (MAP)
+2007-12-10	-	fn:printerFriendly: virker nu uden trailing "/" på url ved rewrite method "print" (MAP)
+2007-12-10	-	hierarchial rewrite tilføjer nu trailing "/" på addresser (MAP)
+2007-12-14	-	RELEASE: VERSION 2.7.2
+
+2008-01-04	-	fn:printerFriendly: bruger ny fn return_printerFriendly_url til at generere url. Den nye funktion kan bruges til at lave print-knapper andre steder. (MAP)
+2008-01-04	-	Send-to-friend sender nu ud med htmlMimeMail (MAP)
+2008-01-09	-	newsletter: rettet fejl ved tilmelding via formular-integration. Hvis der var interessekategorier på nyhedsbrevet blev der automatisk opted ud af alle kategorier - i cms/cms_utilities findes et script til oprydning (MAP)
+2008-01-10	-	page404: Tilføjet class error_404 for bedre mulighed for styling (MAP)
+2008-01-10	-	fn:returnResultSnippet returnerer nu pænere snippets af begrænset længde (MAP)
+2008-01-10	-	commonscripts.js:preview af sider kaldes nu UDEN &lang= for at undgå session variabel forstyrrelse (CJS)
+2008-01-14	-	kalender: Tilføjet datepicker på fra/til dato (MAP)
+2008-01-14	-	kalender: Tilføjet "Fremhæv begivenhed" og "Benyt oversigtsbillede" (MAP)
+2008-01-14	*	Nye felter på EVENTS:
+					ALTER TABLE `EVENTS` 
+						ADD `FOCUSEVENT` TINYINT( 1 ) NOT NULL DEFAULT '0' 
+						COMMENT 'Used to put focus on the event, can be used in plugins to draw out only focused elements or for css',
+						ADD `IMAGE_ID` INT NOT NULL DEFAULT '0' 
+						COMMENT 'Used for event list-image';
+2008-01-15	-	nyhedsarkiv: Tilføjet datepicker på nyhedsdato (MAP)
+2008-01-15	-	formularværktøj: Tilføjet datepicker på aktiv-datoer (MAP)
+2008-01-15	*	3 nye datapermissions til Generelle rettigheder på menuer/nyhedsarkiver/kalendere (MAP)
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_MENU_ACCESS', 'CMS: Brugeren har adgang til menuen under "Sider"', '1', '1'
+					);
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_NEWSARCHIVE_ACCESS', 'CMS: Brugeren har adgang til nyhedsarkivet under "Nyheder"', '1', '1'
+					);
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_CALENDAR_ACCESS', 'CMS: Brugeren har adgang til kalenderen under "Kalender"', '1', '1'
+					);
+2008-01-16	-	nyt modul: "Generelle indstillinger -> Rettigheder" (permissions). Begræns adgangen til menuer, nyhedsarkiver og kalendere (MAP)
+2008-01-16	*	3 nye datapermissions til Specifikke rettigheder på menuer/nyhedsarkiver/kalendere (MAP)
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_PAGE_ACCESS', 'CMS: Brugeren har adgang til at redigere / slette siden', '7', '1'
+					);
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_NEWSITEM_ACCESS', 'CMS: Brugeren har adgang til at redigere / slette nyheden', '8', '1'
+					);
+					INSERT INTO `PERMISSIONS` (
+					`ID` ,
+					`NAME` ,
+					`DESCRIPTION` ,
+					`PERMISSIONGROUPS_ID` ,
+					`IS_DATAPERMISSION`
+					)
+					VALUES (
+					NULL , 'DATA_CMS_EVENT_ACCESS', 'CMS: Brugeren har adgang til at redigere / slette arrangementet', '9', '1'
+					);
+2008-01-21	*	3 nye permissions til at sætte specifikke rettigheder på menuer/nyhedsarkiver/kalendere (MAP)
+					INSERT INTO `PERMISSIONS` (`ID`, `NAME`, `DESCRIPTION`, `PERMISSIONGROUPS_ID`, `IS_DATAPERMISSION`) VALUES 
+					('', 'CMS_SETDATAPERMISSIONS_EVENTS', 'CMS: Brugeren må ændre rettigheder til enkeltbegivenheder', 9, 0),
+					('', 'CMS_SETDATAPERMISSIONS_NEWS', 'CMS: Brugeren må ændre rettigheder til enkeltnyheder', 8, 0),
+					('', 'CMS_SETDATAPERMISSIONS_PAGES', 'CMS: Brugeren må ændre rettigheder til enkeltsider', 7, 0);
+2008-01-21	*	3 nye permissions til at sætte generelle rettigheder på menuer/nyhedsarkiver/kalendere (MAP)
+					INSERT INTO `PERMISSIONS` (`ID`, `NAME`, `DESCRIPTION`, `PERMISSIONGROUPS_ID`, `IS_DATAPERMISSION`) VALUES 
+					('', 'CMS_SETDATAPERMISSIONS_CALENDARS', 'CMS: Brugeren må ændre rettigheder til kalenderarkiver', 9, 0),
+					('', 'CMS_SETDATAPERMISSIONS_NEWSFEEDS', 'CMS: Brugeren må ændre rettigheder til nyhedsarkiver', 8, 0),
+					('', 'CMS_SETDATAPERMISSIONS_MENUS', 'CMS: Brugeren må ændre rettigheder til menuer', 7, 0);
+2008-01-22	*	Ny tabel til auto-opgradering log (MAP)
+					CREATE TABLE `CMS_UPGRADES` (
+					`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+					`UPGRADE_ID` TEXT NOT NULL ,
+					`UPGRADE_DESCRIPTION` TEXT NOT NULL ,
+					`UPGRADE_BEGIN` DATETIME NOT NULL ,
+					`UPGRADE_END` DATETIME NOT NULL ,
+					`USER_LOGGED_IN` INT NOT NULL COMMENT 'Contains ID of user logged in when performing upgrade',
+					`CMS_VERSION` TEXT NOT NULL COMMENT 'CMS version at the time of upgrade',
+					`CMS_BUILD` TEXT NOT NULL COMMENT 'CMS build at the time of upgrade'
+					) ENGINE = MYISAM COMMENT = 'Log of CMS upgrades performed automatically';
+2008-01-23	A	Rettigheder konverteret fra LOCKED_BY_USER til DATA_PERMISSIONS. Gælder PAGES, NEWS, EVENTS (MAP)
+2008-01-23	-	Rettet fejl hvor der ved "ny side" ville stå "Opret ny side: [TITEL PÅ FØRSTE SIDE I SYSTEMET]" (MAP)
+2008-01-23	-	CMS rettighedsstyring på sider/nyheder/kalender er lagt om til datarettigheder (MAP)
+2008-01-23	-	Rewrite-keywords slettes nu sammen med data hvor funktionen sletRow benyttes (MAP)
+2008-01-24	-	RELEASE: VERSION 2.7.3
+
+2008-01-24	*	Rettighed til nyt modul: Generelle rettigheder - burde have været med i seneste version (MAP)
+					INSERT INTO `PERMISSIONS` (`ID`, `NAME`, `DESCRIPTION`, `PERMISSIONGROUPS_ID`, `IS_DATAPERMISSION`) VALUES 
+('', 'CMS_GENERALPERMISSIONS', 'CMS: Brugeren har adgang til at indstille generelle arkivrettigheder', 7, 0)
+2008-01-24	*	Ekstra felt på CMS_UPGRADES - burde have været med i seneste version (MAP)
+					ALTER TABLE `CMS_UPGRADES` ADD `COMMENTS` TEXT NOT NULL COMMENT 'Comments added by the upgrade process';
+2008-01-24	-	Rettet fejl i sharedfunctions/check_data_permission så den nu igen virker frontend (MAP)
+2008-01-24	-	Rettet fejl i site_selector.php så auto_upgrade.php nu også kører ved kun 1 site (MAP)
+2008-01-25	-	return_search_results: Sider der er links til andre sider ekskluderes nu fra søgeresultatet (MAP)
+2008-02-06	*	Nye felter på CART_PAYMENTTERMS (MAP):
+					ALTER TABLE `CART_PAYMENTTERMS` ADD `IS_CARDPAYMENT` TINYINT( 1 ) NOT NULL DEFAULT '0' 
+						COMMENT 'If a paymentterm with IS_PAYMENT = 1 is chosen, user is presented with card-entry-step';
+					ALTER TABLE `CART_PAYMENTTERMS` ADD `POSITION` INT NOT NULL DEFAULT '0' COMMENT 'Paymentterms are ordered by POSITION';
+2008-02-15	-	frontend.common->return_site_to_show: Dør nu med korrekt UTF-8 tegnsæt, hvis der ikke findes matchende site i CMS_SITEDOMAIN (MAP)
+2008-02-15	*	Ny tabel til diverse logning (specifikt google ping) (TMH):
+					CREATE TABLE IF NOT EXISTS `ACTIVITY_LOG` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `NAME` text NOT NULL,
+					  `LASTRUN` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `LASTRUN_COMPLETE` datetime NOT NULL default '0000-00-00 00:00:00',
+					  `DESCRIPTION` text NOT NULL,
+					  `STATUS` text NOT NULL,
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='USED TO MONITOR ACTIVITIES'  
+2008-02-15	*	Ny tabel til ping interval (TMH):
+					CREATE TABLE IF NOT EXISTS `PINGCHECK` (
+					  `ID` mediumint(8) unsigned NOT NULL auto_increment,
+					  `URL` tinytext NOT NULL,
+					  `SERVER` tinytext NOT NULL,
+					  `TIMECHECKED` datetime NOT NULL default '0000-00-00 00:00:00',
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='USED TO ENFORCE PING INTERVAL';
+2008-02-15	-	Feeds opdateres nu ved slettet blogindlæg og slettet nyhed (MAP)
+2008-02-20	-	Links i rss feeds rewrites nu (MAP)
+2008-02-20	-	Nyhedsbrev-arkiv, frontend: Viser ikke længere slettede nyhedsbreve (MAP)
+2008-02-20	-	Implementeret Google sitemap-funktionalitet (TMH)
+2008-02-20	-	Implementeret RSS ping funktionalitet (TMH)
+2008-02-25	-	Nyt modul "Newsletter import" (CJS)
+2008-02-26	-	Rettet fejl i dropbox-import så filnavne kan indeholde æøå (MAP)
+2008-02-27  +   Ny variabel i cms_baseconfig: $utf8_site (default = true, da alle nyere versioner er utf8) (CJS)
+2008-02-28	-	frontend.common->cmsTranslate: Ekstra (optional) parameter så det er muligt at override session sproget (MAP)
+2008-03-02	+	Ny variabel i cms_baseconfig: $newsarchive_newsPerPage_cms til at styre hvor mange nyheder der skal vises i cms nyhedsarkiv (MAP)
+2008-03-02	-	Modul: News -> Implementeret bladring og fjernet "forfatter-filter" (MAP)
+2008-03-02	+	Ny variabel i cms_baseconfig: $calendar_eventsPerPage_cms til at styre hvor mange events der skal vises i cms kalenderarkiv (MAP)
+2008-03-02	-	Modul: Events -> Implementeret bladring og fjernet "forfatter-filter" og tilføjet dato-filter (MAP)
+2008-03-04	*	Ekstra felter på FILEARCHIVE_FOLDERS (MAP):
+					ALTER TABLE `FILEARCHIVE_FOLDERS` ADD `PARENT_ID` INT NOT NULL DEFAULT '0',
+					ADD `PUBLIC_FOLDER` TINYINT( 1 ) NOT NULL DEFAULT '0',
+					ADD `FOLDER_DESCRIPTION` TEXT NOT NULL ,
+					ADD `THREAD_ID` INT NOT NULL DEFAULT '0',
+					ADD `LEVEL` INT NOT NULL DEFAULT '0';
+2008-03-04 (+)	Support for custom customfield attributter i filen /includes/custom_customfieldattributes.inc.php - se dokumentation i filen (MAP)
+2008-03-12	-	Relaterede nyheder trækkes nu ud sorteret efter newsdate desc, title asc og newsdate vises på listen (MAP)
+2008-03-12	-	Relaterede begivenheder trækkes nu ud sorteret efter startdate desc, enddate asc, title asc og startdate/enddate vises på listen (MAP)
+2008-03-12	-	RELEASE: VERSION 2.7.4
+
+2008-03-25	*	Rettet fejl i rettigheder / billedarkiv. CMS_PICTUREARCHIVEMANAGER omdøbt til "CMS_SETDATAPERMISSIONS_PICTUREARCHIVE_FOLDERS". Rettet i følgende filer: cms_nyinstans.txt, fck_customimage.php + filer i picturearchive modulet - (MAP)
+2008-03-26	-	Tilføjet "link" og "download"-links i filarkivet (MAP)
+2008-03-26	-	RELEASE: VERSION 2.7.5
+
+2008-03-31	-	Nu også muligt at skrive CUSTOM-funktioner der overrider shop-funktionerne returnOrderStamdata (funktionsnavn i variablen $customMakeOrderPermanentFunctionName) og makeOrderPermanent (funktionsnavn i variablen $customReturnOrderStamdataFunctionName) (MAP)
+2008-03-31	*	Tilføjet ekstra felt på CMS_SITEDOMAINS for valgfri redirect url på domæne + tilrettet i fn check_for_redirect: (MAP)
+					ALTER TABLE `CMS_SITEDOMAINS` ADD `REDIRECT_TO_URL` TEXT NOT NULL ;
+2008-03-31	*	Tilføjet ekstra felt på PAGES, så siden kan 301'e til valgfri side (fanebladet søgeoptimering) inkl. relevante rettelser i gemRow + frontend-common (fn: return_content_build_array + render_page_content): (MAP)
+					ALTER TABLE `PAGES` ADD `REDIRECT_TO_URL` TEXT NOT NULL ;
+2008-04-02	-	Rettelse i funktionen mustBeLoggedIn() (CJS)    
+2008-04-11	(+)	Ny variabel i baseconfig: $useModRewrite_enforce_url_rewrite (default=false) hvis denne er true, vil cms'et redirecte til en omskrevet udgave af den url som forespørges. Desuden vil et. forside-keys blive strippet væk. (MAP)
+2008-04-11	-	Rettet fejl i blogmanager, så nu virker "ny feed key" (MAP)
+2008-04-11	-	RELEASE: VERSION 2.7.6
+
+2008-04-17	-	Tilføjet installer (MAP)
+2008-04-17	-	Flyttet enkelte funktioner for oprensning af template (CJS)
+2008-04-17	-	Tilføjet eksempel templeate + eksempel nyhedsbrev template (CJS)
+2007-04-17	-	Kræver nu cms login for at se /cms/phpinfo.php (MAP)
+2008-04-11	-	RELEASE: VERSION 2.7.7
+
+2008-05-28	*	Ny tabel FILEARCHIVE_TYPE + data (TMH)
+				CREATE TABLE IF NOT EXISTS `FILEARCHIVE_TYPE` (
+					  `ID` int(11) NOT NULL auto_increment,
+					  `INTERNAL_NAME` text character set utf8 NOT NULL,
+					  `ICON_PATH` text character set utf8 NOT NULL,
+					  `DESCRIPTION` text NOT NULL,
+					  PRIMARY KEY  (`ID`)
+					) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+				INSERT INTO `FILEARCHIVE_TYPE` (`ID`, `INTERNAL_NAME`, `ICON_PATH`, `DESCRIPTION`) VALUES
+				(1, '.doc', '/cms/images/icon_word.png', 'Word fil'),
+				(2, '.xls', '/cms/images/icon_excel.png', 'Excel fil'),
+				(5, '.psd', '/cms/images/icon_photoshop.png', 'Photoshop fil'),
+				(3, '.pub', '/cms/images/icon_publisher.png', 'Publisher fil'),
+				(4, '.ppt', '/cms/images/icon_powerpoint.png', 'PowerPoint fil'),
+				(6, '.pdf', '/cms/images/icon_pdf.png', 'Acrobat fil'),
+				(7, '.indd', '/cms/images/icon_indesign.png', 'InDesign fil'),
+				(8, '.ai', '/cms/images/icon_illustrator.png', 'Illustrator fil'),
+				(9, '.fla', '/cms/images/icon_flash.png', 'Flash fil'),
+				(10, '.zip', '/cms/images/icon_zip.png', 'ZIP arkiv'),
+				(11, 'generic_video', '/cms/images/icon_video.png', 'Video fil'),
+				(12, '.txt', '/cms/images/icon_txt.png', 'Tekst fil'),
+				(13, '.rar', '/cms/images/icon_rar.png', 'RAR arkiv'),
+				(14, '.pkg', '/cms/images/icon_pkg.png', 'PKG arkivfil'),
+				(15, 'generic_quicktime', '/cms/images/icon_quicktime.png', 'Quicktime fil'),
+				(16, 'generic_sound', '/cms/images/icon_sound.png', 'Lydfil'),
+				(17, 'generic_image', '/cms/images/icon_jpg.png', 'Billedfil'),
+				(18, 'gif_bmp', '/cms/images/icon_gif_bmp.png', 'GIF eller BMP fil'),
+				(19, 'exe', '/cms/images/icon_exe.png', 'Executable fil'),
+				(20, 'png', '/cms/images/icon_jpg.png', 'PNG fil'),
+				(21, 'generic', '/cms/images/icon_default.png', 'Ukendt filtype'),
+				(22, 'dmg', '/cms/images/icon_dmg.png', 'Disk Image'),
+				(23, 'jpg', '/cms/images/icon_jpg.png', 'JPG fil'),
+				(24, 'tif', '/cms/images/icon_jpg.png', 'TIF fil');
+
+2008-05-28	*	Nyt felt på tabel FILEARCHIVE_FILES (TMH)
+				ALTER TABLE  `FILEARCHIVE_FILES` ADD  `FILETYPE_ID` INT NOT NULL DEFAULT  '21';
+
+2008-05-28	*	Ny rettighed "CMS_SETDATAPERMISSIONS_FILEARCHIVE_FOLDERS" (TMH)
+				INSERT INTO `PERMISSIONS` (`ID`, `NAME`, `DESCRIPTION`, `PERMISSIONGROUPS_ID`, `IS_DATAPERMISSION`) VALUES (NULL, 'CMS_SETDATAPERMISSIONS_FILEARCHIVE_FOLDERS', 'Udvidede rettigheder i filarkiv', '11', '0');
+2008-05-28	-	Ny version af filarkivet (module "filearchive2") - nu med hierarkiske mapper, upload af flere filer, progress bar. Bagudkompatibel med tidligere udgave. (TMH)
+2008-05-28	-	RELEASE: VERSION 2.7.8
+
+2008-06-09	-	Ny variabel, $arr_content_exclude, gør det muligt at undgå output af sidetitel og resume i funktionen buildPageMainContent. (MAP)
+2008-06-09	-	newBuildFrontendMenu ikke længere links til den aktuelle side - anchor fjernet. Valgte side kan styles på li.selected (MAP)
+2008-06-24	-	Ændret rækkefølge på tabeller i cms/modules/newsletter/newsletter_common.inc.php i linje 1459. Den tidligere rækkefølge gav problemer på visse konfigurationer (MAP)
+2008-07-08	-	Ændret rækkefølge på tabeller i cms/modules/formeditor2/formeditor2_common.inc.php linje 199. Den tidligere rækkefølge gav problemer på visse konfigurationer (MAP)
+2008-10-06	-	/cms/modules/pages/pages_index.php:L402 - rettet fejl hvor ikke-færdige custom-boxes dukkede op ved redigering af side (MAP)
+2008-10-06	-	/cms/modules/filearchive2/filearchive2_common.inc.php:L505 - Files no longer stored in folders, so need to physically delete (MAP)
+2008-10-06	-	/includes/download.php:L28 - Files no longer stored in folders (filearchive 2), so look in the right place, if no foldername is given (MAP)
+2008-10-06	-	/install/install.common.inc.php:function db_create_homepage: Now also created row in BOX_SETTINGS needded to store view-state of fixed/standard boxes (MAP)
+2008-10-06	-	/cms/modules/blogs/frontend/blogs_common.inc.php:L454 - Added nl2br on blog-comments (MAP)
+2008-10-31	-	frontend_common.inc.php:fn:returnDiscountPercentage - Fixed issues with users not identified (logged in) (MAP)
+2008-10-31	-	frontend_common.inc.php:fn:checkoutDefaultForm - Removed debugging string left in by accident (MAP)
+2008-10-31	-	frontend_common.inc.php:fn:returnOrderflow - Now shows check-out steps correctly (MAP)
+2008-11-25  -   /cms/modules/shop/frontend/shop_common.inc.php:L513 - Bug that causes "quality" to not show up on product view fixed, QUALITY should be QUALITY_ID (MAP)
+2009-02-24  -   common.inc.php:remove_files_recursive_wildcard - Fixed issue on newer php versions causing glob-calls to fail return error instead of empty array when no files/dirs are matched. (MAP)
+2009-02-24  -   /cms/modules/newsletter/newsletter_common.inc.php:update_newsletter_urls - Replaced by new version contributed by Kristian Wiborg / Intern1. This to fix issues around matching mailto: tags and more. (MAP)
+2009-03-15	-	/cms/modules/newsletter/newsletter_common.inc.php:update_newsletter_urls_callback - Replaced by new version contributed by Kristian Wiborg / Intern1. This to implement newsletter click-tracking on rewritten links.
+2009-03-15	-	frontend_common.inc.php:fn:return_content_build_array - Added "2.10"-functionality to register newsletter click-tracking on rewritten links. Contributed by Kristian Wiborg / Intern1.
+2009-03-15	-	RELEASE: VERSION 2.7.9
+
+2009-05-26	+	Updated FCKeditor to version 2.6.4 (ws 2.2) to fix issues with Firefox 3. This new version of the editor also works in (later versions of) Safari browsers. When upgrading, remember to update the root-folder file /cms_fckconfig.js and to migrate any changes to ToolbarSets that are specific to the installation you are upgrading. (MAP)
+2009-05-26	-	Updated "fancy-upload" script used in the new file archive to version 3.0 (was 2.0b4) and did a bit more testing for a more robust implementation of the filearchive2-module. (MAP)
+2009-05-27	-	File-links in fck-editor plug-in and related content now shows hierarchical folders as in filearchive2. Sorting is not quite perfect but better than before. (MAP)
+
+2009-05-27	*	New field on DEFINED_FORMS will hold setting for spam prevention when implemented (MAP): 
+				ALTER TABLE `DEFINED_FORMS` ADD `SPAMPREVENT_CAPTCHA` TINYINT( 1 ) NOT NULL DEFAULT '0';
+2009-05-27	-	CAPTCHA spam prevention now possible on forms (MAP)
+2009-07-09	-	RELEASE: VERSION 2.7.10
+				
+2010-01-17	-	Instans CMS now on Google Code and in SVN. No fear of commit(ment)? (MPN)				
+2010-02-19	-	/cms/fckeditor_plugins/customLink/fck_customLink.php: FCK customLink-plugin opdateret, så der laves relative links i stedet for absolutte links (gælder for events, pages, files, nyheder) (KWI) 
+2010-02-19	-	/cms/fckeditor_plugins/customImage/fck_customImage.php: FCK customImage-plugin opdateret, så der laves relative links til billede ressourcer i stedet for absolutte (KWI)
+2010-02-20	-	/cms/index.php: Opdatering så instans CMS backend ikke kræver at magic quotes er slået til i PHP. Instans virker stadig selvom det er slået til. Der bruges mysql_real_escape_string i stedet (KWI)
+				
+				

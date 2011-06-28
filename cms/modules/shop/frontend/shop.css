@@ -1,0 +1,185 @@
+.headlinebar {
+	background-color: #d0d0ff;
+	border: 1px solid #aaa;
+	margin-bottom: 5px;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+}
+/* GROUP STYLES */
+.group {
+	background-color: #ececec;
+	border: 1px solid #aaa;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.group table td {
+	vertical-align: top;
+}
+
+.groupimage {
+	width: 120px;
+	border: 1px solid #aaa;
+	margin-right: 5px;
+}
+
+.groupname { 
+	margin-bottom: 0;
+}
+
+.groupname a, .groupdesc a {
+	text-decoration: none !important;
+}
+.groupname a:hover {
+	text-decoration: underline !important;
+}
+
+.groupdetailline {
+	margin-top: 0; 
+	font-size: 90%;
+	text-transform: uppercase;	
+}
+
+.groupviewproducts {
+	height: auto;
+	line-height: 15px;
+	text-align: center;
+	border: 1px solid #aaa;
+	background-color: white;
+	padding: 3px;
+	margin-top: 3px;
+}
+.groupviewproducts a {
+	text-decoration: none !important;
+}
+.groupviewproducts a:hover {
+	text-decoration: underline !important;
+}
+/* PRODUCT STYLES */
+.listform {
+	display: inline;
+}
+
+th {
+	text-align: left;
+	border-bottom: 1px #ececec solid;
+}
+
+.altrow {
+	background-color: #ececec;
+}
+
+.number {
+	text-align: right;
+	padding-right: 5px;
+}
+
+.product {
+	background-color: white;
+	border: 1px solid #aaa;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.productMoreInfo {
+	text-decoration: underline;
+	margin-left: 5px;
+}
+
+.productimage {
+	width: 120px;
+	border: 1px solid #aaa;
+	margin-right: 5px;
+}
+
+.productimagecomment {
+	color: #aaa;
+	font-size: 80%;
+	text-align: center;
+}
+
+.product table {
+	width: 100%;
+}
+.product table td {
+	vertical-align: top;
+}
+
+.product table td table {
+	width: 291px;
+	float: right; 
+}
+
+.product table td.productextralabel {
+	text-align: left;
+	width: 40%;
+	padding-right: 15px;
+}
+
+.product table td.shoprestriction {
+	color: #aaa;
+	font-size: 80%;
+}
+
+.product table td.alignright {
+	text-align: right;
+}
+
+.product table td.productextravalue {
+	font-weight: bold;
+}
+.productname { 
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.productname a, .productdesc a {
+	text-decoration: none !important;
+}
+.productname a:hover {
+	text-decoration: underline !important;
+}
+.productdetailline {
+	margin-top: 0 !important; 
+	font-size: 90%;
+	text-transform: uppercase;	
+}
+.colliInput {
+	float: left;
+	padding-left: 0px;
+}
+.unitprice {
+	display: inline;
+	font-size: 80%;
+	font-weight: normal;
+	text-transform: uppercase;	
+}
+.productAddtoCart {
+	text-align: right;
+}
+
+// Productimage popup
+body{margin:0px;}
+
+.popimagecontainer h1 { 
+	font:bold 18px verdana;
+	text-align:center;
+}
+
+.popimagecontainer img {
+	border:1px solid #ddd;
+}
+
+.popimagecontainer {
+	text-align:center;
+}
+
+.popimagecontainer a {
+	font:normal 12px verdana;
+	color: black;
+	text-decoration: none;
+}
+.popimagecontainer a:hover {
+	text-decoration: underline;
+}

@@ -1,0 +1,66 @@
+
+/* Other page-related css */
+#form_newsletter {
+	margin-top: 10px;
+}
+
+h2 {
+	height: 16px;
+	line-height: 16px;
+}
+
+.loadIndicator {
+	float: right;
+}
+
+#newsletter_listitem_knapbar {
+	margin-top: 15px;
+}
+
+.feltkode {
+	margin-bottom: 10px ! important;
+}
+
+/* itemlist */
+
+#newsletter_itemlist{
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.newsletter_itemlist_table {
+	width: 100%;
+	border: 1px solid #c7c78f;
+	margin-bottom: 3px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.newsletter_itemlist_buttoncontainer {
+	padding: 5px;
+}
+
+/* Choose image */
+.imageFolder {
+	border: 1px solid #c7c78f;
+	padding: 4px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+#imageList {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	padding: 4px;
+}
+
+td.imagetd {
+	text-align: center;
+	color: #aaa;
+	font-size: 9px;
+}
+td.imagetd img {
+	border: 1px solid #ddd;
+}

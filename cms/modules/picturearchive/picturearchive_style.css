@@ -1,0 +1,126 @@
+#folderView{
+	width:200px; 
+	float:left; 
+	height:auto;
+	border:1px solid #ccc; 
+	border-top:1px solid #ccc; 
+	border-left:1px solid #ccc; 
+	background-color:#ddd
+}
+
+#folderView ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#folderView ul a{
+	text-decoration:none;
+}
+#folderView ul a:hover, .commandItem a:hover, a.editDelete:hover{
+	color:#fff;
+	background-color:#000;
+	border:0;
+}
+
+#folderView ul li{
+	background-color:#fff;
+	padding:3px 0 3px 5px;
+	margin:0 0 1px 0;
+	font: normal 11px verdana;
+}
+#folderView ul li ul li{
+	background-color:#fff;
+	font:normal 11px verdana;
+	padding-left:20px;
+}
+#folderView ul li ul li ul li{
+	background-color:#fff;
+	font:normal 11px verdana;
+	padding-left:20px;
+}
+
+a.newfolder, a.editDelete{
+	border:1px solid #ccc;
+	padding:2px;
+	color:#060;
+	font:normal 10px arial;
+}
+
+#fileView{
+	width:530px; 
+	float:left; 
+	height:500px;
+	overflow:auto;
+	padding-right:10px;
+}
+
+#clearer{
+	clear:both;
+}
+
+span.filename{
+	font:normal 9px verdana;
+	color:#aaa;
+}
+a.selected{
+	color:#EC008C;
+}
+
+.imageItem{
+	float:left; 
+	border:1px solid #ccc; 
+	padding:3px; 
+	margin:0 3px 3px 3px; 
+	text-align:center; 
+	height:160px;
+}
+
+
+.commandItem{
+	float:left; 
+	border:1px solid #ccc; 
+	padding:3px; 
+	margin:0 3px 3px 3px; 
+	text-align:left; 
+	height:auto;
+	width:75px;
+	font:normal 10px arial;
+	background-color:#fff;
+	width:500px;
+	clear:both;
+}
+
+.commandItem a{
+	color:#060;
+}
+
+a.editDelete{
+	border:0;
+	padding:0;
+	
+}
+
+span.divider{
+	margin:0 5px 0 5px;
+	color:#000;
+}
+
+h2 {
+	height: 16px;
+	line-height: 16px;
+}
+
+.loadIndicator {
+	float: right;
+}
+
+#uploaded_image_preview {
+	height: 500px;
+	text-align: center;
+	overflow: scroll;
+}
+#dropbox_help {
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color:#fff;
+}

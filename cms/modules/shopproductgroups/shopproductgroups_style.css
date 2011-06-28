@@ -1,0 +1,21 @@
+h1 {
+	margin-bottom: 10px;
+}
+
+div .feltblok_wrapper {
+	border-top: 1px solid #ddd;
+}
+
+.imageFolder {
+	border: 1px solid #c7c78f;
+	padding: 4px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+#imageList {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	padding: 4px;
+}

@@ -1,0 +1,4 @@
+cfield___FIRSTNAME;cfield___LASTNAME;cfield___EMAIL;cfield___COMPANY;cfield___ADDRESS;cfield___ZIPCODE;cfield___CITY;cfield___PHONE;cfield___CELLPHONE;cfield___JOB_TITLE
+Hans;Hansen;hans@testdomain.com;;Vejen 1;8000;Århus C;99998888;;Chef
+Peter;Petersen;peter@anothertest.dk;;Bygaden 2;9999;Ingenby;77665544;;Handyman
+Tusnelda;Tusneldasen;tusnelda@findesikke.net;Firmaet ApS;Storvejen 3;2211;Hemligby;;22222222;Personaledirektør

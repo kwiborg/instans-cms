@@ -1,0 +1,8 @@
+# Rewrite rules
+RewriteEngine on
+
+# Redirect to index.php
+RewriteCond		%{REQUEST_FILENAME}		!-f
+RewriteCond		%{REQUEST_FILENAME}		!-d
+RewriteCond		%{REQUEST_FILENAME}		!(index.php)	[NC]
+RewriteRule		^(.*)$ ___DOCUMENT_ROOT___/index.php?rw=true	[L]

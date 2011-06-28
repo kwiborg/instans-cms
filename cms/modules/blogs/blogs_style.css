@@ -1,0 +1,48 @@
+
+li.blogcomment {
+	padding: 3px 0 0 0;
+	margin: 10px 0 0 0;
+	border: 1px solid #cdcdcd;
+}
+
+li.authorcomment {
+	border: 2px solid #a2e9a7;
+}
+li.notapprovedcomment {
+	border: 2px solid #f5f487;
+}
+li.spamcomment {
+	border: 2px solid #e9a2aa;
+}
+
+.awaiting_approval {
+	color: green;
+	font-weight: bold;
+}
+
+.blogpost_comment_byline {
+	font-size: 90%;
+	padding: 3px;
+}
+
+div.blogcomment {
+	padding: 3px;
+}
+
+
+div.blogpost_commenttools {
+	background-color: #cdcdcd;
+	padding: 3px;
+}
+
+div.authorcomment {
+	background-color: #a2e9a7;
+	color: #fff;
+}
+div.notapprovedcomment {
+	background-color: #f5f487;
+}
+
+div.spamcomment {
+	background-color: #e9a2aa;
+}

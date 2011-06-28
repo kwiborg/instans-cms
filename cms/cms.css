@@ -1,0 +1,636 @@
+html{ 
+ height: 100%; 
+ margin-bottom: 0.01em; 
+}
+
+body{
+ margin:0px;
+ background-color:#ffffff;
+}
+
+table#plainTable{
+ border:0;
+ font:11px verdana;
+ color:#000;
+ padding:5px
+}
+
+table#plainTable td{
+ border:0;
+ padding:5px;
+}
+
+table#plainTable td.topbar{
+ border:0;
+ padding:5px;
+ background-color:#fff;
+}
+
+a{
+ color:black; 
+ text-decoration:underline;
+}
+
+div#wrapitall{
+ position:relative;
+ width:980px;
+ min-width:780px;
+ height:100%;
+ margin:0px auto;
+ background-color:#fff;
+}
+
+div#topbar{
+ position:relative;
+ top:0px;
+ left:0px;
+ width:100%;
+ height:40px;
+ background-color:#ffffff;
+ border-bottom:1px solid #ddd;
+}
+
+.menugroup .menuitem {
+	padding-left: 15px;
+}
+
+img#logo{
+ position:absolute;
+ top:4px;
+ left:14px;
+}
+
+div#topmenu{
+ position:relative;
+ top:14px;
+ left:200px;
+ font-family:verdana, sans-serif;
+ font-size:10px;
+}
+
+div#main_wrapper{
+ height:100%;
+}
+
+div#leftsidemenu{
+ width:150px;
+ padding-top:20px;
+ padding-left:20px;
+ line-height:18px;
+}
+
+div#content{
+ position:absolute;
+ left:190px;
+ top:60px;
+ width:770px;
+}
+	
+a.sidemenu, a.sidemenu_valgt, .menugroup{
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+ text-decoration:none;
+}
+
+.menugroup {
+	color:#EC008C;
+	margin:5px 0 5px 0;
+}
+
+#cmsVersion{
+	font:9px verdana;
+	color:#ccc;
+	margin-top:5px;
+	border-top:1px solid #fff;
+}
+
+a.sidemenu:hover, a.kolonnetitel:hover{
+ color:#EC008C;
+}
+
+a.sidemenu_valgt{
+ font-weight: bold;
+}
+
+a.linkplus{
+ color:#EC008C;
+ text-decoration:none;
+}
+
+div.hvemerloggetind{
+ font-family:verdana, sans-serif;
+ font-size:9px;
+ color:#777;
+ padding:5px;
+ border:1px solid #dddddd;
+ margin-top:20px;
+ width:80%;
+ line-height:13px;
+}
+
+form{
+ margin:0px;
+ padding:0px;
+}
+
+div#footer{
+ text-align:center;
+ color:#aaaaaa;
+ font-family:verdana, sans-serif;
+ font-size:9px;
+}
+
+div.spacer{
+ width:1px;
+ height:100px;
+}
+
+h1{
+ font:bold 18px verdana;
+ color:#000;
+ margin-top:0px;
+ margin-bottom:0px;
+ background-color:#eee;
+ padding:5px;
+ border:1px solid #ddd; 
+}
+
+h2{
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+ color:#000;
+ font-weight:bold;
+ margin:15px 0px 4px 0px;
+ background-color:#ddd;
+ padding:3px;
+ border-top:1px solid #ddd;
+ border-bottom:1px solid #ddd;
+ height: 16px;
+ line-height: 16px;
+}
+
+h3{
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+ margin:15px 0px 4px 0px;
+ padding:3px;
+}
+
+div.broedtekst
+{
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+ line-height:16px;
+ color:#000;
+ margin-top:10px;
+}
+
+.inputfelt, .inputfelt_disabled, .inputfelt_kort, .inputfelt_kort_disabled, .inputselect
+{
+ font:11px verdana;
+ margin-top: 2px;
+ padding:2px;
+}
+
+.inputfelt, .inputfelt_disabled
+{
+ width:70%;
+}
+
+.inputfelt_disabled
+{
+ background-color:#ccc;
+ border:#555;
+}
+
+.inputfelt_kort_disabled
+{
+ background-color:#ccc;
+ border:#555;
+}
+
+.standard_select, .lilletekst_knap, div.knapbar input, div.knapbar_inline input
+{
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+}
+
+textarea{
+ font:11px verdana;
+ width:70%;
+}
+
+div.feltblok_header, div.feltblok_header_alert{
+ background-color:#eee;
+ color:#000;
+ text-align:left;
+ margin-top:20px;
+ font-family:verdana, arial, sans-serif;
+ font-size:14px;
+ font-weight:bold;
+ border-collapse: collapse;
+ padding:10px;
+ border:1px solid #ddd; 
+ border-bottom:0;
+}
+
+div.feltblok_header_alert {
+ background-color:#990000;
+}
+
+div.feltblok_wrapper, div.feltblok_wrapper_hidden{
+ padding:1px 10px 10px 10px;
+ background-color:#eee;
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+ border:1px solid #ddd; 
+ border-top:0;
+}
+
+div.feltblok_wrapper hr{
+ height:1px;
+ color:#aaa;
+ margin:5px 0 5px 0;
+}
+
+div.feltblok_wrapper_hidden{
+ display:none;
+ background-color:#eee;
+}
+
+div.knapbar{
+ padding:5px 5px 5px 20px;
+ background-color:#eee; 
+ text-align:right;
+ margin-top:20px;
+ position:relative;
+ border:1px solid #ddd; 
+}
+
+div.knapbar_inline
+{
+ padding:5px 5px 5px 5px;
+ background-color:#eee; 
+ text-align:right;
+}
+
+p.feltkommentar{
+ font-family:verdana,arial, sans-serif;
+ font-size:9px;
+ color:#000;
+ margin:5px 0 0 0;
+}
+
+table.oversigt{
+ background-color:#eee;
+ width:100%;
+ margin-top:7px;
+ border:1px solid #aaa;
+ border-collapse: collapse;
+ border-spacing: 0;  
+ margin-bottom: 1px;
+ font:10px verdana;
+}
+
+table.oversigt tr.oversigt1, table.oversigt tr.oversigt2, table.oversigt tr.picture_row, tr.file_row{
+ background-color:#eee;
+}
+
+table.oversigt tr.oversigtHover{
+ background-color:#fff;
+}
+
+table.oversigt tr.picture_row td{
+ padding-left:20px;
+}
+
+table.oversigt tr.trtop:hover{
+ color:#000;
+}
+
+tr.expanded{
+ display:none;
+ background-color:#fff;
+}
+
+table.oversigt td{
+ padding:4px;
+ border: 1px solid #aaaaaa;
+ border-spacing:0px;
+}
+
+table.oversigt td.kolonnetitel{
+ padding:4px;
+ border-bottom: 1px solid #aaaaaa;
+ font-weight:bold;
+ background-color:#eee;
+}
+
+table.oversigt .lilleknap, .lilleknap{
+ font-family:verdana, arial, sans-serif;
+ font-size:9px;
+}
+
+table.filter td{
+ padding:0px 20px 10px 0px;
+ border-spacing:0px;
+}
+
+table.filter td.submitbar{
+ text-align:left;
+ padding-bottom:0px;
+}
+
+a.kolonnetitel{
+ text-decoration:none;
+ color:#000;
+}
+
+a.whitelink{
+ display:block;
+ color:#000;
+ font-family:verdana, arial, sans-serif;
+ font-size:11px;
+}
+
+div.floated_inputfelt{
+ float:left;
+ margin-right:20px;
+}
+
+span.yellow{
+ color:#363;
+ font-family:verdana, arial, sans-serif;
+ font-size:14px;
+ font-weight:bold; 
+}
+
+a.highlighted{
+ color:#ff0000
+}
+
+.plusminus{
+ width:24px;
+ border:1px solid #aaaaaa;
+ background-color:transparent;
+}
+
+div.formfelt_container{ 
+ border:1px solid #666;
+ background-color:#ccc;
+ margin:10px;
+ padding:10px;
+}
+
+div.formfelt_overskrift { 
+ background-color:#eee;
+ margin-bottom:2px;
+}
+
+div.formfelt_overskrift input{ 
+ background-color:#eee;
+ width:90%;
+ border:0px solid #eee;
+ font-size:10px
+}
+
+div.formfelt_funktioner { 
+ background-color:#ded;
+ margin-top:2px;
+ text-align:right;
+ padding:3px; 
+}
+
+td.dataUdHead{
+ background-color:#fff;
+ color:#000;
+ font-size:14px;
+ font-weight:bold;
+}
+
+
+/* 
+////////// NYE SIDEOVERSIGT STYLES /////////////////////////////////////////////////////////////////////////////////////
+*/
+
+div.sideOversigt{
+ height:20px; 
+ padding:3px;
+ font-size:10px; 
+ background-color:#eee;
+ display:block;
+}
+
+div.sideOversigtHover{
+ height:20px; 
+ padding:3px;
+ font-size:10px; 
+ background-color:#fff;
+ display:block;
+}
+
+span.breadcrumb_normal{
+ color:#000;
+}
+
+span.breadcrumb_nodisplay{
+ color:#999;
+}
+
+span.pageInfo{
+ color:#aaa;
+ font-size:9px;
+}
+
+.redSelectLine{
+ background-color:#ffcccc;
+}
+
+.yellowSelectLine{
+ background-color:#ffcccc;
+}
+
+/* STYLES FOR BOOKMAKER */
+
+div.sectionContainer, div.sectionContainerHover{
+ clear:both; 
+ height:20px;
+ border-botton:1px solid red;
+}
+
+div.sectionContainer .indent, div.sectionContainerHover .indent{
+ float:left;
+ width:0;
+ height:1px;
+}
+
+div.sectionContainer .sectionNumber, div.sectionContainerHover .sectionNumber{
+ float:left;
+ width:auto;
+ margin-right:5px;
+ padding-left:2px;
+ line-height:20px;
+}
+
+div.sectionContainerHover{
+	background-color:#f00;
+}
+
+div.sectionContainer .sectionTitle, div.sectionContainerHover .sectionTitle{
+ float:left;
+ width:200px;
+ line-height:20px;
+}
+
+div.sectionContainer .functions, div.sectionContainerHover .functions{
+ float:right;
+ padding-right:2px;
+}
+
+ul.bookContents a{
+ font:10px verdana, arial;
+ color:#070;
+ background-color:#ddd;
+ text-decoration:none;
+ padding:0 5px 0 5px;
+ margin-left:5px;
+ border:1px solid #bbb 
+}
+
+ul.bookContents a:hover{
+ background-color:#eee;
+ color:#000;
+}
+
+ul.bookContents li{
+ color:#600;
+}
+
+div.usermessage_ok{
+ border:1px solid #aaa;
+ padding:5px;
+ background-color:#66cc66;
+ color:#fff;
+ font:bold 11px verdana;
+ margin-bottom:10px;
+}
+
+div.usermessage_error{
+ border:1px solid #aaa;
+ padding:5px;
+ background-color:#cc2222;
+ color:#fff;
+ font:bold 11px verdana;
+ margin-bottom:10px;
+}
+
+table#matrix td{
+ border:1px solid #aaa;
+ font:10px verdana;
+}
+
+table#matrix textarea{
+   border:1px solid #aaa;
+   font:10px verdana;
+   width:100px;
+   height:50px;
+   background-color:#fff888;
+   overflow:auto;
+}
+
+/* CSS rules for tabs */
+
+#tablist{
+padding: 3px 0;
+margin-left: 0;
+margin-bottom: 0;
+margin-top: 0.1em;
+font: bold 12px Verdana;
+}
+
+#tablist li{
+list-style: none;
+display: inline;
+margin: 0;
+}
+
+#tablist li a{
+padding: 3px 0.5em;
+ma_rgin-left: 3px;
+margin-right:3px;
+border: 1px solid #ddd;
+border-bottom: none;
+background-color: white;
+ border-collapse:collapse;
+}
+
+#tablist li a:link, #tablist li a:visited{
+color: #000;
+text-decoration: none;
+background-color: #aaaaaa;
+}
+
+#tablist li a.current{
+ color: #000;
+ background-color: #eeeeee;
+}
+
+#tabcontentcontainer{
+ width: 728px;
+/* Insert Optional Height definition here to give all the content a unified height */
+ padding:5px 20px 20px 20px;
+ background-color:#eee;
+ font-family:verdana, arial, sans-serif;
+ font-size:11px; 
+ border:1px solid #ddd;
+ border-top:0;
+ border-collapse:collapse;
+}
+
+.tabcontent{
+display:none;
+}
+
+.movepage_outer{
+	width:720px; 
+	font-size:10px; 
+	height:15px; 
+	padding:3px; 
+	background-color:#fff;
+	border:1px solid #aaa; 
+	display:none
+}
+
+.movepage_inner{
+	font-size:10px; 
+	float:left;
+}
+
+/* DROPBOX */
+
+#dropbox_errorlog, #dropbox_importlog{
+	background-color:#ddd;
+	margin:10px 0 10px 0;
+	padding:3px;
+}
+#dropbox_errorlog strong{
+	color:#f00;
+}
+#dropbox_importlog strong{
+	color:#060;
+}
+
+/* DATAPERMISSIONS_SET */
+
+.datapermission_functions {
+	width: 100px;
+	text-align: right;
+}
+
+.datapermission_plusminus {
+	width: 24px;	
+}
+
+.loadIndicator {
+	float: right;
+}

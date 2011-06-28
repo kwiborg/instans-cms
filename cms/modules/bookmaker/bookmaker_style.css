@@ -1,0 +1,38 @@
+.imageFolder {
+	border: 1px solid #c7c78f;
+	padding: 4px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+#imageList {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	/* border: 1px solid #c7c78f; */
+	padding: 4px;
+}
+
+table#plainTable{
+ border:0;
+ font:10px arial;
+ color:#000;
+ padding:0px
+}
+
+table#plainTable td{
+ border: 0;
+ padding-left:5px;
+ padding-right:5px;
+}
+
+table#plainTable p{
+ background-color:#f1f1e3;
+ font:12px arial;
+}
+
+
+table#plainTable td.topbar{
+ border-bottom: 1px solid #c7c78f;
+ padding:2px;
+}

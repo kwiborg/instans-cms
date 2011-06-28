@@ -1,0 +1,47 @@
+
+/* Other page-related css */
+.newsletter_sendoutdate {
+	padding-right: 10px;
+	padding-bottom: 3px;
+}
+
+.newsletter_subscribe {
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.newsletter_knapbar {
+	width: 100%;
+	text-align: right;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin-top: 15px;
+}
+
+.newsletter_usermessage {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+
+.message_ok {
+	background-color: #75fe75;
+}
+.message_neutral {
+	background-color: #fefefe;
+}
+.message_error {
+	background-color: #fe7575;
+}
+
+/* FRONTEND: newsletter_show_topbar */
+.newsletter_show_topbar {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #ccc;
+	background-color: #fefefe;
+	font-size: 11px;
+	font-family: verdana;
+	font-weight: bold;
+}

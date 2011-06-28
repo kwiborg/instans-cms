@@ -1,0 +1,19 @@
+
+/* Other page-related css */
+h2 {
+	height: 16px;
+	line-height: 16px;
+}
+
+.loadIndicator {
+	float: right;
+}
+
+.pagination{
+	float: left;
+	font:11px verdana;
+	font-weight: bold;
+	line-height:16px;
+	color:#000;
+	margin-left:-8px;
+}

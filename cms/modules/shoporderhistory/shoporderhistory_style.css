@@ -1,0 +1,68 @@
+.order{
+	padding:10px;
+	background-color:#fff;
+	margin:10px 0 10px 0;
+	border:1px solid #ccc;
+	font:normal 11px/16px verdana;
+}
+.even{
+	background-color:#eee;
+}
+.orderlines{
+	margin-top:10px;
+}
+.orderlines th{
+	text-align:left;
+	background-color:#fff;
+	padding:5px;
+	border-right:1px solid #ccc;
+}
+.orderlines td{
+	padding:5px;
+	background-color:#eee;
+	border-right:1px solid #ccc;
+}
+.orderlines tr.even td{
+	background-color:#ddd;
+}
+.orderlines tr.ordertotal td{
+	background-color:#ded;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.total{
+	text-align:right;
+}
+.ordercompact{
+	width:100%;
+	font:normal 11px/16px verdana;
+	border-top:5px solid #ccc;
+}
+.ordercompact th{
+	text-align:left;
+	padding:3px;
+	border-right:1px solid #ccc;
+}
+.ordercompact tr td{
+	background-color:#eee;
+	padding:3px;
+	border-right:1px solid #ccc;
+}
+.ordercompact tr.even td{
+	background-color:#ddd;
+}
+
+#sort_orders, .offset{
+	margin:10px 0 10px 0;
+	background-color:#fffccc;
+	font:normal 11px verdana;
+	border:1px solid #ccc;
+	padding:5px;
+}
+
+.printorder{
+	text-align:right;
+	margin:10px 0 10px 0;
+	padding:3px;
+	background-color:#eee;
+}

@@ -1,0 +1,39 @@
+INSTANS CMS DEPLOYMENT GUIDE
+-----------------------------
+
+VERSION + DOWNLOAD
+*	Update $cmsVersion and $cmsBuild in cms_baseconfig.inc.php 
+*	Create release entry in /cms/documentation/cms_history.txt
+*	If database, config or file structure has changed, update installer accordingly - particularly you should update the /resources/db-structure.sql file
+*	Download all changes to "instans.dk DEV"
+
+DEV BACKUP
+*	Backup "instans.dk DEV"-folder into "Instans.dk_VERSIONS" and rename it "dev_2.7.X" according to version
+*	Make structure-only dump of dev database and place it into "Instans.dk_VERSIONS" with the name "web00228_dev_2.X.X.sql". Remember to uncheck the "Add AUTO_INCREMENT value" checkbox
+
+
+CREATE NEW VERSION
+*	Copy "instans.dk DEV"-folder into "Instans.dk_VERSIONS" and rename it DEPLOY2.7.X
+*	From the new DEPLOY-folder, delete:
+		- any .DSSTORE file
+		- any root-folder marked "IKKE_DEPLOY"
+ 		- any files in /includes/uploaded_files/
+ 		- any files in /includes/uploaded_pictures/
+ 		- any files in /includes/images/gfxheadings_cache/
+ 		- any files in /includes/images/shopimages_cache/
+ 		- any files in /includes/templates/smarty_templates_c
+		- any files in /feeds/
+*	Empty these files so they are 0 bytes:
+		- .htaccess file
+		- cms_config.inc.php file
+
+
+TEST NEW VERSION
+*	Copy the contents of the deploy folder to a vacant spot - for instance project1.instans.dk
+*	Remember to blank the database!
+*	Run the installer and check that the example-site comes up. 
+*	Log-in to the cms and test that this is running as well.
+
+DEPLOY
+*	Create a ZIP file of the DEPLOY folder and upload it to deploy.instans.dk
+*	Post 

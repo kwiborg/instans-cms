@@ -1,0 +1,18 @@
+
+/* Other page-related css */
+h2 {
+	height: 16px;
+	line-height: 16px;
+}
+
+.loadIndicator {
+	float: right;
+}
+
+#availablefiles {
+	height: auto;
+}
+
+#attachedfiles {
+	padding-bottom: 2px;
+}
