@@ -19,7 +19,6 @@
   		if (mysql_num_rows($result) != 1) {
    			$e = 1;
   		} else { 
-  			
 			$permissions = returnDistinctUserPermissions($row[ID]);
 			if (is_array($permissions)){
 				if (in_array("CMS_LOGIN", $permissions)){
