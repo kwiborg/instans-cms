@@ -6,18 +6,20 @@
   		unset($e);
   		$sql = "
 			select  
-				ID, USERNAME, FIRSTNAME, LASTNAME
+				ID, USERNAME, FIRSTNAME, LASTNAME, PASSWORD, PASSWORD_ENCRYPTED
 			from 
 				USERS 
 			where 
-				USERNAME='$_POST[username]' and (PASSWORD='$_POST[pass]' or PASSWORD_ENCRYPTED='".md5($_POST[pass])."') and DELETED='0' 
+				USERNAME='".mysql_real_escape_string($_POST[username])."' and (PASSWORD='".mysql_real_escape_string($_POST[pass])."' or PASSWORD_ENCRYPTED='".md5($_POST[pass])."') and DELETED='0' 
 			limit 1
 		";
   		$result = mysql_query($sql);
   		$row = mysql_fetch_array($result);
+  		  		
   		if (mysql_num_rows($result) != 1) {
    			$e = 1;
   		} else { 
+  			
 			$permissions = returnDistinctUserPermissions($row[ID]);
 			if (is_array($permissions)){
 				if (in_array("CMS_LOGIN", $permissions)){
